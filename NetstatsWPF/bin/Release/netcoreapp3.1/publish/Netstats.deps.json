@@ -1,0 +1,272 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Netstats/1.0.0": {
+        "dependencies": {
+          "Caliburn.Micro": "3.2.0",
+          "Caliburn.Micro.Core": "3.2.0",
+          "FluentWPF": "0.8.0",
+          "Fody": "6.3.0",
+          "MaterialDesignThemes": "3.2.0",
+          "Npgsql": "5.0.3",
+          "PropertyChanged.Fody": "3.3.1",
+          "SharpCompress": "0.27.1",
+          "ppy.squirrel.windows": "1.9.0.5"
+        },
+        "runtime": {
+          "Netstats.dll": {}
+        }
+      },
+      "Caliburn.Micro/3.2.0": {
+        "dependencies": {
+          "Caliburn.Micro.Core": "3.2.0"
+        },
+        "runtime": {
+          "lib/net45/Caliburn.Micro.Platform.Core.dll": {
+            "assemblyVersion": "3.2.0.0",
+            "fileVersion": "3.2.0.0"
+          },
+          "lib/net45/Caliburn.Micro.Platform.dll": {
+            "assemblyVersion": "3.2.0.0",
+            "fileVersion": "3.2.0.0"
+          },
+          "lib/net45/System.Windows.Interactivity.dll": {
+            "assemblyVersion": "4.5.0.0",
+            "fileVersion": "3.0.40218.0"
+          }
+        }
+      },
+      "Caliburn.Micro.Core/3.2.0": {
+        "runtime": {
+          "lib/net45/Caliburn.Micro.dll": {
+            "assemblyVersion": "3.2.0.0",
+            "fileVersion": "3.2.0.0"
+          }
+        }
+      },
+      "DeltaCompressionDotNet/2.0.0": {
+        "runtime": {
+          "lib/net20/DeltaCompressionDotNet.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
+      "FluentWPF/0.8.0": {
+        "runtime": {
+          "lib/netcoreapp3.0/FluentWPF.dll": {
+            "assemblyVersion": "0.8.0.6",
+            "fileVersion": "0.8.0.6"
+          }
+        }
+      },
+      "Fody/6.3.0": {},
+      "MaterialDesignColors/1.2.7": {
+        "runtime": {
+          "lib/netcoreapp3.1/MaterialDesignColors.dll": {
+            "assemblyVersion": "1.2.7.1979",
+            "fileVersion": "1.2.7.1979"
+          }
+        }
+      },
+      "MaterialDesignThemes/3.2.0": {
+        "dependencies": {
+          "MaterialDesignColors": "1.2.7"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/MaterialDesignThemes.Wpf.dll": {
+            "assemblyVersion": "3.2.0.1979",
+            "fileVersion": "3.2.0.1979"
+          }
+        }
+      },
+      "Mono.Cecil/0.9.6.1": {
+        "runtime": {
+          "lib/net45/Mono.Cecil.Mdb.dll": {
+            "assemblyVersion": "0.9.6.0",
+            "fileVersion": "0.9.6.0"
+          },
+          "lib/net45/Mono.Cecil.Pdb.dll": {
+            "assemblyVersion": "0.9.6.0",
+            "fileVersion": "0.9.6.0"
+          },
+          "lib/net45/Mono.Cecil.Rocks.dll": {
+            "assemblyVersion": "0.9.6.0",
+            "fileVersion": "0.9.6.0"
+          },
+          "lib/net45/Mono.Cecil.dll": {
+            "assemblyVersion": "0.9.6.0",
+            "fileVersion": "0.9.6.0"
+          }
+        }
+      },
+      "Npgsql/5.0.3": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "4.6.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Npgsql.dll": {
+            "assemblyVersion": "5.0.3.0",
+            "fileVersion": "5.0.3.0"
+          }
+        }
+      },
+      "ppy.squirrel.windows/1.9.0.5": {
+        "dependencies": {
+          "DeltaCompressionDotNet": "2.0.0",
+          "Mono.Cecil": "0.9.6.1",
+          "SharpCompress": "0.27.1",
+          "Splat": "1.6.2"
+        },
+        "runtime": {
+          "lib/Net45/NuGet.Squirrel.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.0"
+          },
+          "lib/Net45/Squirrel.dll": {
+            "assemblyVersion": "1.9.0.0",
+            "fileVersion": "1.9.0.0"
+          }
+        }
+      },
+      "PropertyChanged.Fody/3.3.1": {
+        "dependencies": {
+          "Fody": "6.3.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/PropertyChanged.dll": {
+            "assemblyVersion": "3.3.1.0",
+            "fileVersion": "3.3.1.0"
+          }
+        }
+      },
+      "SharpCompress/0.27.1": {
+        "runtime": {
+          "lib/netcoreapp3.1/SharpCompress.dll": {
+            "assemblyVersion": "0.27.1.0",
+            "fileVersion": "0.27.1.0"
+          }
+        }
+      },
+      "Splat/1.6.2": {
+        "runtime": {
+          "lib/Net45/Splat.dll": {
+            "assemblyVersion": "1.6.2.0",
+            "fileVersion": "1.6.2.0"
+          }
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/4.6.0": {}
+    }
+  },
+  "libraries": {
+    "Netstats/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Caliburn.Micro/3.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-GILmeguZra44K77M0QFcLR+Xjp/3Vl6IkWs5aOQOYmxoqiO9YuGyK7/2Aha6jKR6LtR03yv3TVg8rkqeBDNZAA==",
+      "path": "caliburn.micro/3.2.0",
+      "hashPath": "caliburn.micro.3.2.0.nupkg.sha512"
+    },
+    "Caliburn.Micro.Core/3.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jmpC4OSvejrrIlcSmlzFjtyOmHQBrKgqJ9hy/LeWGoytct0e2b+TVgzWHTtvkzBF6TWWYlWCNErF10O6hNoL0g==",
+      "path": "caliburn.micro.core/3.2.0",
+      "hashPath": "caliburn.micro.core.3.2.0.nupkg.sha512"
+    },
+    "DeltaCompressionDotNet/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dCqBAkjnkwu5sKJqWVTlvGEA/k2Z2F4z9g/dv3wjxNp9D/B2XvHVoLarPHbH/6kRD6Oaik/Z3oUDkPapnspLMw==",
+      "path": "deltacompressiondotnet/2.0.0",
+      "hashPath": "deltacompressiondotnet.2.0.0.nupkg.sha512"
+    },
+    "FluentWPF/0.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Yq/GjRtlNRjE5lLf99NWqJ+9kSeuhSrt55/Is1wgZwSL6s2oZWxfT1C6bnz7O+kzb/aAWEZD94X0MP5mW4H+qQ==",
+      "path": "fluentwpf/0.8.0",
+      "hashPath": "fluentwpf.0.8.0.nupkg.sha512"
+    },
+    "Fody/6.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kBGlW/vBUvBSyCvFI3YICNl77gjUr0KMROlBTeBPN/+J3JMU57w1dpXPwjmU4ahdBTYLomzgxKLaJ3jVNuXuQg==",
+      "path": "fody/6.3.0",
+      "hashPath": "fody.6.3.0.nupkg.sha512"
+    },
+    "MaterialDesignColors/1.2.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-e+shDlaSAJcuTArqtfWjVUgAOlwQlgWq8akkzCGe1MvfV1ozmOqqXyWxg5w0vC/3/KZ84wnPUJeI1wzEpI0uJQ==",
+      "path": "materialdesigncolors/1.2.7",
+      "hashPath": "materialdesigncolors.1.2.7.nupkg.sha512"
+    },
+    "MaterialDesignThemes/3.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aOZQShQuV7sCWOwO98dYz1S4stmIWDBH+Q6KoR3wDiDyuG7twoGnBDzQBhrxuS16I3GQiG5nfvUjEJFVc/zdKg==",
+      "path": "materialdesignthemes/3.2.0",
+      "hashPath": "materialdesignthemes.3.2.0.nupkg.sha512"
+    },
+    "Mono.Cecil/0.9.6.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yMsurNaOxxKIjyW9pEB+tRrR1S3DFnN1+iBgKvYvXG8kW0Y6yknJeMAe/tl3+P78/2C6304TgF7aVqpqXgEQ9Q==",
+      "path": "mono.cecil/0.9.6.1",
+      "hashPath": "mono.cecil.0.9.6.1.nupkg.sha512"
+    },
+    "Npgsql/5.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IDx2tijhyXGz7tVXQH0iGnCnW0ReSUy3UC99ytSklJKscob5WV8eLZWuT/jqYBq0l07RmZOSrdjUEDEetsgDIA==",
+      "path": "npgsql/5.0.3",
+      "hashPath": "npgsql.5.0.3.nupkg.sha512"
+    },
+    "ppy.squirrel.windows/1.9.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VPUiIVOcXGSsEWSXU0pZ8Wm7ffPaLK/F89BLoXWn7YRWx/80LxntIrK3n47bPMadi/JnVz6qcfSxldulpnFnaw==",
+      "path": "ppy.squirrel.windows/1.9.0.5",
+      "hashPath": "ppy.squirrel.windows.1.9.0.5.nupkg.sha512"
+    },
+    "PropertyChanged.Fody/3.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/K/X8wn2IZV7Zezb+WvieOalWopFJKEcB7BrPoDFCj74VexupWdtvqriCoifSyrX0E+XhTzk0cVQd26hQ7TODg==",
+      "path": "propertychanged.fody/3.3.1",
+      "hashPath": "propertychanged.fody.3.3.1.nupkg.sha512"
+    },
+    "SharpCompress/0.27.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pXM2jOOGaGczM4960JM1HU0Loiu0rnvqlkvUSiqF9OJe2XFAcxM7kCWlVbzLlzR1sqGi7LZR6NNEQJJqdAOgkQ==",
+      "path": "sharpcompress/0.27.1",
+      "hashPath": "sharpcompress.0.27.1.nupkg.sha512"
+    },
+    "Splat/1.6.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DeH0MxPU+D4JchkIDPYG4vUT+hsWs9S41cFle0/4K5EJMXWurx5DzAkj2366DfK14/XKNhsu6tCl4dZXJ3CD4w==",
+      "path": "splat/1.6.2",
+      "hashPath": "splat.1.6.2.nupkg.sha512"
+    },
+    "System.Runtime.CompilerServices.Unsafe/4.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HxozeSlipUK7dAroTYwIcGwKDeOVpQnJlpVaOkBz7CM4TsE5b/tKlQBZecTjh6FzcSbxndYaxxpsBMz+wMJeyw==",
+      "path": "system.runtime.compilerservices.unsafe/4.6.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512"
+    }
+  }
+}

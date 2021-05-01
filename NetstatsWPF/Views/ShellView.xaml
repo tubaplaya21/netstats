@@ -1,0 +1,1429 @@
+﻿<Window x:Class="Netstats.Views.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:intr="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+        Foreground="{DynamicResource MaterialDesignBody}"
+        x:Name="MainWindow"
+        Title="{Binding Title}" Height="780" Width="700" WindowStyle="None" 
+        MaxHeight="{Binding WindowHeight}" MaxWidth="{Binding WindowWidth}"
+        WindowState="{Binding CurrentWindowState}"
+        Left="{Binding LeftPosition, Mode=OneWayToSource}"
+        Top="{Binding TopPosition, Mode=OneWayToSource}"
+        AllowsTransparency="True" Background="Transparent"
+        MinHeight="748" MinWidth="680"  
+        WindowStartupLocation="CenterScreen" Topmost="{Binding IsTopMost, Mode=OneWay}">
+
+    <!--Height="780" Width="700"
+        fw:AcrylicWindow.Enabled="False" 
+        fw:AcrylicWindow.TintOpacity="0.75"
+        fw:AcrylicWindow.NoiseOpacity="0"
+        fw:AcrylicWindow.TintColor="#232323"
+        fw:AcrylicWindow.AcrylicWindowStyle="NoIcon"-->
+
+    <intr:Interaction.Triggers>
+        <intr:EventTrigger EventName="Loaded">
+            <intr:InvokeCommandAction Command="{Binding LoadedWindowCommand}"/>
+        </intr:EventTrigger>
+    </intr:Interaction.Triggers>
+    
+    <Window.Resources>
+        <Style x:Key="VisibleMenu" TargetType="Menu">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ShowingMenu}" Value="False">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            
+        </EventTrigger>
+    </Window.Triggers>
+    
+    <Window.InputBindings>
+        <KeyBinding Key="LeftAlt" Modifiers="Alt" Command="{Binding ShowMenuCommand}"/>
+        <KeyBinding Key="RightAlt" Modifiers="Alt" Command="{Binding ShowMenuCommand}"/>
+    </Window.InputBindings>
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="{Binding CaptionHeight}" GlassFrameThickness="0" 
+                      ResizeBorderThickness="{Binding ResizeBorderThickness}"
+                      CornerRadius="0"/>
+    </WindowChrome.WindowChrome>
+
+    <Border Background="{DynamicResource MaterialDesignPaper}" CornerRadius="8"
+            Padding="0" BorderThickness="{Binding BorderThickness}">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="10" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition MinHeight="10">
+                    <RowDefinition.Style>
+                        <Style TargetType="{x:Type RowDefinition}">
+                            <Setter Property="Height" Value="30"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ShowingMenu}" Value="False">
+                                    <Setter Property="Height" Value="0"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </RowDefinition.Style>
+                </RowDefinition>
+                <RowDefinition Height="50" />
+                <RowDefinition MinHeight="150" />
+                <RowDefinition Height="*" />
+                <RowDefinition MinHeight="150" />
+                <RowDefinition Height="*" />
+                <RowDefinition MinHeight="150" />
+                <RowDefinition Height="*" />
+                <RowDefinition MinHeight="150" />
+                <RowDefinition Height="*" />
+                <RowDefinition MinHeight="70" Height="0.15*" />
+                <RowDefinition Height="10" />
+            </Grid.RowDefinitions>
+
+
+            <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3"
+                    Background="{DynamicResource MaterialDesignBackground}"
+                    CornerRadius="{Binding Radius}">
+                <DockPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3">
+                    <Button  Width="25" Height="25" Style="{StaticResource HoverlessButton}"
+                             WindowChrome.IsHitTestVisibleInChrome="True" Padding="0" Margin="5,0,0,0"
+                             materialDesign:ButtonAssist.CornerRadius="0" materialDesign:RippleAssist.RippleSizeMultiplier="500" materialDesign:RippleAssist.IsCentered="True"
+                             Cursor="Arrow" Command="{Binding MenuCommand}"
+                             Foreground="{DynamicResource MaterialDesignBody}">
+                        <Image Source="/heartbeat.ico" Width="20" Height="20"/>
+                    </Button>
+                    <TextBlock Text="{Binding Title}" Padding="5,5"/>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" >
+                        <Button Width="25" Height="25" Style="{StaticResource ControlButton}"
+                                WindowChrome.IsHitTestVisibleInChrome="True" Padding="0"
+                                materialDesign:ButtonAssist.CornerRadius="0" materialDesign:RippleAssist.RippleSizeMultiplier="500" materialDesign:RippleAssist.IsCentered="True"
+                                ToolTip="Minimize" Cursor="Arrow"
+                                Command="{Binding MinimizeCommand}">
+                            <Image Source="/Minimize.png" Width="10" Height="10"/>
+                        </Button>
+                        <Button Width="25" Height="25" Style="{StaticResource ControlButton}"
+                                WindowChrome.IsHitTestVisibleInChrome="True" materialDesign:RippleAssist.IsDisabled="True"
+                                materialDesign:ButtonAssist.CornerRadius="0" Padding="0"
+                                ToolTip="{Binding MaximizeText}" Cursor="Arrow"
+                                Command="{Binding MaximizeCommand}">
+                            <Image Source="{Binding MaximizeSource}" Width="10" Height="10"/>
+                        </Button>
+                        <Button Width="25" Height="25" Style="{StaticResource WindowCloseButton}"
+                                    WindowChrome.IsHitTestVisibleInChrome="True" Padding="0" 
+                                    materialDesign:ButtonAssist.CornerRadius="{Binding ButtonRadius}" 
+                                    HorizontalAlignment="Center"
+                                    ToolTip="Close" Cursor="Arrow"
+                                    Command="{Binding ExitCommand}">
+                            <Image Source="/Close.png" Width="10" Height="10"/>
+                        </Button>
+
+                    </StackPanel>
+                </DockPanel>
+            </Border>
+
+            <StackPanel Grid.Column="1" Grid.Row="1">
+                <Menu IsMainMenu="True" FontSize="13" Background="{DynamicResource MaterialDesignPaper}"
+                      Style="{StaticResource VisibleMenu}" Height="30" 
+                      Foreground="{DynamicResource MaterialDesignBody}">
+                    <MenuItem Header="File" Height="30">
+                        <MenuItem Header="Check for updates" Command="{Binding CheckUpdateCommand}"/>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock>Dark Mode</TextBlock>
+                            <ToggleButton Margin="10,0,0,0" IsChecked="{Binding IsDarkTheme}"
+                                          Style="{StaticResource MaterialDesignSwitchAccentToggleButton}"/>
+                        </StackPanel>
+                    
+                    
+                        <MenuItem Header="Settings">
+                            <DockPanel>
+                                <TextBlock HorizontalAlignment="Left">Wendy's Data</TextBlock>
+                                <ToggleButton Margin="10,0,0,0" IsChecked="{Binding WendysData}"
+                                              HorizontalAlignment="Right"
+                                              Style="{StaticResource MaterialDesignSwitchAccentToggleButton}"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <TextBlock HorizontalAlignment="Left">Pizza Hut Data</TextBlock>
+                                <ToggleButton Margin="10,0,0,0" IsChecked="{Binding PizzaData}"
+                                              HorizontalAlignment="Right"
+                                              Style="{StaticResource MaterialDesignSwitchAccentToggleButton}"/>
+                            </DockPanel>
+                        </MenuItem>
+                        <MenuItem Header="Exit" Command="{Binding ExitCommand}"/>
+                    </MenuItem>
+                </Menu>
+            </StackPanel>
+        
+        
+            <DockPanel Grid.Column="1" Grid.Row="2" >
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                    <TextBlock FontSize="15" Text="Store Number:" VerticalAlignment="Center" />
+
+                    <TextBox Text="{Binding StoreNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="15" Width="50" BorderThickness="2" Height="30" Margin="7,0,0,0" Padding="2,0"
+                             materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource MaterialDesignFlatButtonRipple}" 
+                             MaxLength="4" CaretBrush="{DynamicResource MaterialDesignBody}">
+                        <TextBox.InputBindings>
+                            <KeyBinding Key="Return" Command="{Binding UpdateCommand}"/>
+                        </TextBox.InputBindings>
+                    </TextBox>
+
+                    <Button Style="{StaticResource MaterialDesignFlatDarkBgButton}" x:Name="btnUpdate" Content="Update" FontSize="12"
+                        Margin="10,2" VerticalAlignment="Center" Command="{Binding UpdateCommand}" 
+                        IsEnabled="{Binding IsNotRunning}" materialDesign:RippleAssist.Feedback="#65fffd"
+                            materialDesign:ButtonAssist.CornerRadius="4"/>
+
+                    <RadioButton Style="{StaticResource MaterialDesignAccentRadioButton}" x:Name="rdoPizza" Content="Pizza Hut" FontSize="12"
+                         VerticalAlignment="Center" IsChecked="True" Margin="2,0"/>
+
+                    <RadioButton Style="{StaticResource MaterialDesignAccentRadioButton}" x:Name="rdoWendys" Content="Wendy's" FontSize="12"
+                         VerticalAlignment="Center" IsChecked="{Binding IsWendys}" Margin="2,0"/>
+                    
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <CheckBox Content="Evan's Box" FontSize="12" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Margin="8,2" VerticalAlignment="Center" HorizontalAlignment="Right" Cursor="Hand"
+                              IsChecked="{Binding IsTopMost, Mode=OneWayToSource}"/>
+
+                    <Button Style="{StaticResource MaterialDesignFlatDarkBgButton}" Content="Doall" FontSize="12"
+                        Margin="5,2" VerticalAlignment="Center" HorizontalAlignment="Right"
+                        Command="{Binding DoallCommand}" materialDesign:RippleAssist.Feedback="#65fffd"
+                            materialDesign:ButtonAssist.CornerRadius="4"/>
+
+                    <Button Style="{StaticResource MaterialDesignFlatDarkBgButton}" x:Name="btnDameware" Content="Dameware" FontSize="12"
+                            Margin="5,2" VerticalAlignment="Center" HorizontalAlignment="Right"
+                            Command="{Binding DamewareCommand}" materialDesign:RippleAssist.Feedback="#65fffd"
+                            materialDesign:ButtonAssist.CornerRadius="4"/>
+                </StackPanel>
+            
+
+            
+            </DockPanel>
+
+
+
+            <GroupBox x:Name="grpRegisters" Grid.Column="1" materialDesign:ColorZoneAssist.Mode="PrimaryDark"
+                      Grid.Row="3" FontSize="12" Padding="4">
+                <GroupBox.Header>
+                    Registers
+                </GroupBox.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock x:Name="lblReg1" Text="Register 1" Grid.Column="1"
+                               Grid.Row="1" FontSize="11" Margin="5,0,5,0" Foreground="{Binding LabelReg1}"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="lblReg2" Text="Register 2" Grid.Column="2"
+                               Grid.Row="1" FontSize="11" Margin="5,0,5,0" Foreground="{Binding LabelReg2}"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="lblReg3" Text="Register 3" Grid.Column="3"
+                               Grid.Row="1" FontSize="11" Margin="5,0,5,0" Foreground="{Binding LabelReg3}"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="lblReg4" Text="Register 4" Grid.Column="4"
+                               Grid.Row="1" FontSize="11" Margin="5,0,5,0" Foreground="{Binding LabelReg4}"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="lblReg5" Text="Register 5" Grid.Column="5"
+                               Grid.Row="1" FontSize="11" Margin="5,0,5,0" Foreground="{Binding LabelReg5}"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="lblReg6" Text="Register 6" Grid.Column="6"
+                               Grid.Row="1" FontSize="11" Margin="5,0,5,0"  Foreground="{Binding LabelReg6}"/>
+
+                    <TextBlock x:Name="lblReg7" Text="Register 7" Grid.Column="7"
+                               Grid.Row="1" FontSize="11" Margin="5,0,5,0" Foreground="{Binding LabelReg7}"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="lblReg8" Text="Register 8" Grid.Column="8"
+                               Grid.Row="1" FontSize="11" Margin="5,0,5,0" Foreground="{Binding LabelReg8}"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="lblReg9" Text="Register 9" Grid.Column="9"
+                               Grid.Row="1" FontSize="11" Margin="5,0,5,0" Foreground="{Binding LabelReg9}"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="lblReg10" Text="Register 10" Grid.Column="10"
+                               Grid.Row="1" FontSize="11" Margin="5,0,5,0" Foreground="{Binding LabelReg10}"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBox Background="{Binding Reg1}" MinWidth="50" Grid.Column="1" BorderBrush="LightGray" BorderThickness="1"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2" Cursor="Hand" IsReadOnly="True" Focusable="False"
+                             HorizontalAlignment="Left" 
+                             ToolTip="{Binding InfoReg1}" Height="25"
+                             Style="{StaticResource MaterialDesignTextBox}">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Reg1"/>
+                        </TextBox.InputBindings>
+                        <TextBox.ContextMenu>
+                            <ContextMenu>
+                                <ContextMenu.InputBindings>
+                                </ContextMenu.InputBindings>
+                                <MenuItem Header="Copy Service Info" Command="{Binding CopyCommand}"
+                                          CommandParameter="Reg1" IsEnabled="{Binding InfoEnabledReg1}"/>
+                                <MenuItem Header="Connect to SMB" Command="{Binding SMBCommand}"
+                                          CommandParameter="Reg1"/>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+
+                    <TextBox Background="{Binding Reg2}" Width="50" Grid.Column="2" BorderBrush="LightGray" BorderThickness="1"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2" Cursor="Hand" IsReadOnly="True" 
+                             HorizontalAlignment="Left" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             ToolTip="{Binding InfoReg2}" SelectionBrush="Transparent"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Reg2"/>
+                        </TextBox.InputBindings>
+                        <TextBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Copy Service Info" Command="{Binding CopyCommand}"
+                                          CommandParameter="Reg2" IsEnabled="{Binding InfoEnabledReg2}"/>
+                                <MenuItem Header="Connect to SMB" Command="{Binding SMBCommand}"
+                                          CommandParameter="Reg2"/>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+
+                    <TextBox Background="{Binding Reg3}" Width="50" Grid.Column="3" BorderBrush="LightGray" BorderThickness="1"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2" Cursor="Hand" IsReadOnly="True" 
+                             HorizontalAlignment="Left" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             ToolTip="{Binding InfoReg3}"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Reg3"/>
+                        </TextBox.InputBindings>
+                        <TextBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Copy Service Info" Command="{Binding CopyCommand}"
+                                          CommandParameter="Reg3" IsEnabled="{Binding InfoEnabledReg3}"/>
+                                <MenuItem Header="Connect to SMB" Command="{Binding SMBCommand}"
+                                          CommandParameter="Reg3"/>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+
+                    <TextBox Background="{Binding Reg4}" Width="50" Grid.Column="4" BorderBrush="LightGray" BorderThickness="1"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2" Cursor="Hand" IsReadOnly="True" 
+                             HorizontalAlignment="Left" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             ToolTip="{Binding InfoReg4}"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Reg4"/>
+                        </TextBox.InputBindings>
+                        <TextBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Copy Service Info" Command="{Binding CopyCommand}"
+                                          CommandParameter="Reg4" IsEnabled="{Binding InfoEnabledReg4}"/>
+                                <MenuItem Header="Connect to SMB" Command="{Binding SMBCommand}"
+                                          CommandParameter="Reg4"/>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+
+                    <TextBox Background="{Binding Reg5}" Width="50" Grid.Column="5" BorderBrush="LightGray" BorderThickness="1"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2"  Cursor="Hand" IsReadOnly="True" 
+                             HorizontalAlignment="Left" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             ToolTip="{Binding InfoReg5}" 
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Reg5"/>
+                        </TextBox.InputBindings>
+                        <TextBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Copy Service Info" Command="{Binding CopyCommand}"
+                                          CommandParameter="Reg5" IsEnabled="{Binding InfoEnabledReg5}"/>
+                                <MenuItem Header="Connect to SMB" Command="{Binding SMBCommand}"
+                                          CommandParameter="Reg5"/>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+
+                    <TextBox Background="{Binding Reg6}" Width="50" Grid.Column="6" BorderBrush="LightGray" BorderThickness="1"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2"  Cursor="Hand" IsReadOnly="True" 
+                             HorizontalAlignment="Left" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             ToolTip="{Binding InfoReg6}"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Reg6"/>
+                        </TextBox.InputBindings>
+                        <TextBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Copy Service Info" Command="{Binding CopyCommand}"
+                                          CommandParameter="Reg6" IsEnabled="{Binding InfoEnabledReg6}"/>
+                                <MenuItem Header="Connect to SMB" Command="{Binding SMBCommand}"
+                                          CommandParameter="Reg6"/>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+
+                    <TextBox Background="{Binding Reg7}" Width="50" Grid.Column="7" BorderBrush="LightGray" BorderThickness="1"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2"  Cursor="Hand" IsReadOnly="True" 
+                             HorizontalAlignment="Left" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             ToolTip="{Binding InfoReg7}"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Reg7"/>
+                        </TextBox.InputBindings>
+                        <TextBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Copy Service Info" Command="{Binding CopyCommand}"
+                                          CommandParameter="Reg7" IsEnabled="{Binding InfoEnabledReg7}"/>
+                                <MenuItem Header="Connect to SMB" Command="{Binding SMBCommand}"
+                                          CommandParameter="Reg7"/>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+
+                    <TextBox Background="{Binding Reg8}" Width="50" Grid.Column="8" BorderBrush="LightGray" BorderThickness="1"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2"  Cursor="Hand" IsReadOnly="True" 
+                             HorizontalAlignment="Left" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             ToolTip="{Binding InfoReg8}"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Reg8"/>
+                        </TextBox.InputBindings>
+                        <TextBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Copy Service Info" Command="{Binding CopyCommand}"
+                                          CommandParameter="Reg8" IsEnabled="{Binding InfoEnabledReg8}"/>
+                                <MenuItem Header="Connect to SMB" Command="{Binding SMBCommand}"
+                                          CommandParameter="Reg8"/>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+
+                    <TextBox Background="{Binding Reg9}" Width="50" Grid.Column="9" BorderBrush="LightGray" BorderThickness="1"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2"  Cursor="Hand" IsReadOnly="True" 
+                             HorizontalAlignment="Left" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             ToolTip="{Binding InfoReg9}"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Reg9"/>
+                        </TextBox.InputBindings>
+                        <TextBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Copy Service Info" Command="{Binding CopyCommand}"
+                                          CommandParameter="Reg9" IsEnabled="{Binding InfoEnabledReg9}"/>
+                                <MenuItem Header="Connect to SMB" Command="{Binding SMBCommand}"
+                                          CommandParameter="Reg9"/>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+
+                    <TextBox Background="{Binding Reg10}" Width="50" Grid.Column="10" BorderBrush="LightGray" BorderThickness="1"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2"  Cursor="Hand" IsReadOnly="True" 
+                             HorizontalAlignment="Left" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             ToolTip="{Binding InfoReg10}"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Reg10"/>
+                        </TextBox.InputBindings>
+                        <TextBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Copy Service Info" Command="{Binding CopyCommand}"
+                                          CommandParameter="Reg10" IsEnabled="{Binding InfoEnabledReg10}"/>
+                                <MenuItem Header="Connect to SMB" Command="{Binding SMBCommand}"
+                                          CommandParameter="Reg10"/>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+
+                    <TextBox x:Name="ReplyReg1" Grid.Column="1" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25"/>
+
+                    <TextBox x:Name="ReplyReg2" Grid.Column="2" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25"/>
+
+                    <TextBox x:Name="ReplyReg3" Grid.Column="3" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25"/>
+
+                    <TextBox x:Name="ReplyReg4" Grid.Column="4" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25"/>
+
+                    <TextBox x:Name="ReplyReg5" Grid.Column="5" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25"/>
+
+                    <TextBox x:Name="ReplyReg6" Grid.Column="6" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25"/>
+
+                    <TextBox x:Name="ReplyReg7" Grid.Column="7" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25"/>
+
+                    <TextBox x:Name="ReplyReg8" Grid.Column="8" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25"/>
+
+                    <TextBox x:Name="ReplyReg9" Grid.Column="9" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25"/>
+
+                    <TextBox x:Name="ReplyReg10" Grid.Column="10" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25"/>
+
+                    <CheckBox x:Name="chkReg1" Content="Enable" Grid.Column="1" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"
+                              IsChecked="{Binding CheckedReg1}"
+                              Command="{Binding CheckChangedCommand}" CommandParameter="Reg1"/>
+
+                    <CheckBox x:Name="chkReg2" Content="Enable" Grid.Column="2" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"
+                              IsChecked="{Binding CheckedReg2}"/>
+
+                    <CheckBox x:Name="chkReg3" Content="Enable" Grid.Column="3" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"
+                              IsChecked="{Binding CheckedReg3}"/>
+
+                    <CheckBox x:Name="chkReg4" Content="Enable" Grid.Column="4" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"
+                              IsChecked="{Binding CheckedReg4}"/>
+
+                    <CheckBox x:Name="chkReg5" Content="Enable" Grid.Column="5" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"
+                              IsChecked="{Binding CheckedReg5}"/>
+
+                    <CheckBox x:Name="chkReg6" Content="Enable" Grid.Column="6" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"
+                              IsChecked="{Binding CheckedReg6}"/>
+
+                    <CheckBox x:Name="chkReg7" Content="Enable" Grid.Column="7" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"
+                              IsChecked="{Binding CheckedReg7}"/>
+
+                    <CheckBox x:Name="chkReg8" Content="Enable" Grid.Column="8" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"
+                              IsChecked="{Binding CheckedReg8}"/>
+
+                    <CheckBox x:Name="chkReg9" Content="Enable" Grid.Column="9" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"
+                              IsChecked="{Binding CheckedReg9}"/>
+
+                    <CheckBox x:Name="chkReg10" Content="Enable" Grid.Column="10" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"
+                              IsChecked="{Binding CheckedReg10}"/>
+
+                </Grid>
+
+            </GroupBox>
+
+
+            <GroupBox x:Name="grpKms" Grid.Column="1" materialDesign:ColorZoneAssist.Mode="PrimaryDark"
+                      Grid.Row="5" FontSize="12" Padding="4">
+                <GroupBox.Header>
+                    KMS
+                </GroupBox.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="5"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock x:Name="lblKms1" Text="{Binding LabelKms1}" Grid.Column="1"
+                               Grid.Row="1" FontSize="11" Margin="5,3,0,3"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="lblKms2" Text="{Binding LabelKms2}" Grid.Column="2"
+                               Grid.Row="1" FontSize="11" Margin="5,3,0,3"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="lblKms3" Text="{Binding LabelKms3}" Grid.Column="3"
+                               Grid.Row="1" FontSize="11" Margin="5,3,0,3"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="lblKms4" Text="{Binding LabelKms4}" Grid.Column="4"
+                               Grid.Row="1" FontSize="11" Margin="5,3,0,3"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="lblKms5" Text="{Binding LabelKms5}" Grid.Column="5"
+                               Grid.Row="1" FontSize="11" Margin="5,3,0,3"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="lblKms6" Text="{Binding LabelKms6}" Grid.Column="6"
+                               Grid.Row="1" FontSize="11" Margin="5,3,0,3"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="lblKms7" Text="{Binding LabelKms7}" Grid.Column="7"
+                               Grid.Row="1" FontSize="11" Margin="5,3,0,3"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="lblKms8" Text="{Binding LabelKms8}" Grid.Column="8"
+                               Grid.Row="1" FontSize="11" Margin="5,3,0,3"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="lblKms9" Text="{Binding LabelKms9}" Grid.Column="9"
+                               Grid.Row="1" FontSize="11" Margin="5,3,0,3"
+                               HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
+
+                    <TextBox Background="{Binding Kms1}" Width="50" Grid.Column="1" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2"  BorderBrush="LightGray" BorderThickness="1" Height="25"
+                             HorizontalAlignment="Left" Cursor="{Binding Cursor}" IsReadOnly="True"
+                             ToolTip="{Binding InfoKms1}"
+                             Style="{StaticResource MaterialDesignTextBox}">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Kms1"/>
+                        </TextBox.InputBindings>
+                        <TextBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Copy Service Info" Command="{Binding CopyCommand}"
+                                          CommandParameter="Kms1" IsEnabled="{Binding InfoEnabledKms1}"/>
+                                <MenuItem Header="Connect to SMB" Command="{Binding SMBCommand}"
+                                          CommandParameter="Kms1" IsEnabled="{Binding IsWendys}"/>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    
+                    </TextBox>
+
+                    <TextBox Background="{Binding Kms2}" Width="50" Grid.Column="2" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2"  BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="{Binding Cursor}" IsReadOnly="True"
+                             ToolTip="{Binding InfoKms2}"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Kms2"/>
+                        </TextBox.InputBindings>
+                        <TextBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Copy Service Info" Command="{Binding CopyCommand}"
+                                          CommandParameter="Kms2" IsEnabled="{Binding InfoEnabledKms2}"/>
+                                <MenuItem Header="Connect to SMB" Command="{Binding SMBCommand}"
+                                          CommandParameter="Kms2" IsEnabled="{Binding IsWendys}"/>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+
+                    <TextBox Background="{Binding Kms3}" Width="50" Grid.Column="3" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2"  BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="{Binding Cursor}" IsReadOnly="True"
+                             ToolTip="{Binding InfoKms3}"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Kms3"/>
+                        </TextBox.InputBindings>
+                        <TextBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Copy Service Info" Command="{Binding CopyCommand}"
+                                          CommandParameter="Kms3" IsEnabled="{Binding InfoEnabledKms3}"/>
+                                <MenuItem Header="Connect to SMB" Command="{Binding SMBCommand}"
+                                          CommandParameter="Kms3" IsEnabled="{Binding IsWendys}"/>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+
+                    <TextBox Background="{Binding Kms4}" Width="50" Grid.Column="4" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2"  BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="{Binding Cursor}" IsReadOnly="True"
+                             ToolTip="{Binding InfoKms4}"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Kms4"/>
+                        </TextBox.InputBindings>
+                        <TextBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Copy Service Info" Command="{Binding CopyCommand}"
+                                          CommandParameter="Kms4" IsEnabled="{Binding InfoEnabledKms4}"/>
+                                <MenuItem Header="Connect to SMB" Command="{Binding SMBCommand}"
+                                          CommandParameter="Kms4" IsEnabled="{Binding IsWendys}"/>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+
+                    <TextBox Background="{Binding Kms5}" Width="50" Grid.Column="5" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2"  BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="{Binding Cursor}" IsReadOnly="True"
+                             ToolTip="{Binding InfoKms5}"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Kms5"/>
+                        </TextBox.InputBindings>
+                        <TextBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Copy Service Info" Command="{Binding CopyCommand}"
+                                          CommandParameter="Kms5" IsEnabled="{Binding InfoEnabledKms5}"/>
+                                <MenuItem Header="Connect to SMB" Command="{Binding SMBCommand}"
+                                          CommandParameter="Kms5" IsEnabled="{Binding IsWendys}"/>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+
+                    <TextBox Background="{Binding Kms6}" Width="50" Grid.Column="6" BorderBrush="LightGray" BorderThickness="1"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2"  materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             HorizontalAlignment="Left" Cursor="{Binding Cursor}" IsReadOnly="True"
+                             ToolTip="{Binding InfoKms6}"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Kms6"/>
+                        </TextBox.InputBindings>
+                        <TextBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Copy Service Info" Command="{Binding CopyCommand}"
+                                          CommandParameter="Kms6" IsEnabled="{Binding InfoEnabledKms6}"/>
+                                <MenuItem Header="Connect to SMB" Command="{Binding SMBCommand}"
+                                          CommandParameter="Kms6" IsEnabled="{Binding IsWendys}"/>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+
+                    <TextBox Background="{Binding Kms7}" Width="50" Grid.Column="7" BorderBrush="LightGray" BorderThickness="1"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2"  materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             HorizontalAlignment="Left" Cursor="{Binding Cursor}" IsReadOnly="True"
+                             ToolTip="{Binding InfoKms7}"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Kms7"/>
+                        </TextBox.InputBindings>
+                        <TextBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Copy Service Info" Command="{Binding CopyCommand}"
+                                          CommandParameter="Kms7" IsEnabled="{Binding InfoEnabledKms7}"/>
+                                <MenuItem Header="Connect to SMB" Command="{Binding SMBCommand}"
+                                          CommandParameter="Kms7" IsEnabled="{Binding IsWendys}"/>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+
+                    <TextBox Background="{Binding Kms8}" Width="50" Grid.Column="8" BorderBrush="LightGray" BorderThickness="1"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2"  materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             HorizontalAlignment="Left" Cursor="{Binding Cursor}" IsReadOnly="True"
+                             ToolTip="{Binding InfoKms8}"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Kms8"/>
+                        </TextBox.InputBindings>
+                        <TextBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Copy Service Info" Command="{Binding CopyCommand}"
+                                          CommandParameter="Kms8" IsEnabled="{Binding InfoEnabledKms8}"/>
+                                <MenuItem Header="Connect to SMB" Command="{Binding SMBCommand}"
+                                          CommandParameter="Kms8" IsEnabled="{Binding IsWendys}"/>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+
+                    <TextBox Background="{Binding Kms9}" Width="50" Grid.Column="9" BorderBrush="LightGray" BorderThickness="1"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2"  materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             HorizontalAlignment="Left" Cursor="{Binding Cursor}" IsReadOnly="True"
+                             ToolTip="{Binding InfoKms9}"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Kms9"/>
+                        </TextBox.InputBindings>
+                        <TextBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Copy Service Info" Command="{Binding CopyCommand}"
+                                          CommandParameter="Kms9" IsEnabled="{Binding InfoEnabledKms9}"/>
+                                <MenuItem Header="Connect to SMB" Command="{Binding SMBCommand}"
+                                          CommandParameter="Kms9" IsEnabled="{Binding IsWendys}"/>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+
+                    <TextBox x:Name="ReplyKms1" Grid.Column="1" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3,3,0,2.63" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                             Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <TextBox x:Name="ReplyKms2" Grid.Column="2" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3,3,0,2.63" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                             Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <TextBox x:Name="ReplyKms3" Grid.Column="3" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3,3,0,2.63" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                             Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <TextBox x:Name="ReplyKms4" Grid.Column="4" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3,3,0,2.63" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                             Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <TextBox x:Name="ReplyKms5" Grid.Column="5" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3,3,0,2.63" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                             Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <TextBox x:Name="ReplyKms6" Grid.Column="6" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3,3,0,2.63" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                             Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <TextBox x:Name="ReplyKms7" Grid.Column="7" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3,3,0,2.63" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                             Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <TextBox x:Name="ReplyKms8" Grid.Column="8" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3,3,0,2.63" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                             Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <TextBox x:Name="ReplyKms9" Grid.Column="9" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3,3,0,2.63" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" Grid.ColumnSpan="2" TextAlignment="Center"
+                             Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <CheckBox x:Name="CheckedKms1" Content="Enable" Grid.Column="1" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2,2.37,0,1.63" HorizontalAlignment="Left" Cursor="Hand"/>
+
+                    <CheckBox x:Name="CheckedKms2" Content="Enable" Grid.Column="2" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2,2.37,0,1.63" HorizontalAlignment="Left" Cursor="Hand"/>
+
+                    <CheckBox x:Name="CheckedKms3" Content="Enable" Grid.Column="3" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2,2.37,0,1.63" HorizontalAlignment="Left" Cursor="Hand"/>
+
+                    <CheckBox x:Name="CheckedKms4" Content="Enable" Grid.Column="4" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2,2.37,0,1.63" HorizontalAlignment="Left" Cursor="Hand"/>
+
+                    <CheckBox x:Name="CheckedKms5" Content="Enable" Grid.Column="5" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2,2.37,0,1.63" HorizontalAlignment="Left" Cursor="Hand"/>
+
+                    <CheckBox x:Name="CheckedKms6" Content="Enable" Grid.Column="6" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2,2.37,0,1.63" HorizontalAlignment="Left" Cursor="Hand"/>
+
+                    <CheckBox x:Name="CheckedKms7" Content="Enable" Grid.Column="7" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2,2.37,0,1.63" HorizontalAlignment="Left" Cursor="Hand"/>
+
+                    <CheckBox x:Name="CheckedKms8" Content="Enable" Grid.Column="8" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2,2.37,0,1.63" HorizontalAlignment="Left" Cursor="Hand"/>
+
+                    <CheckBox x:Name="CheckedKms9" Content="Enable" Grid.Column="9" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2,2.37,0,1.63" HorizontalAlignment="Left" Grid.ColumnSpan="2" Cursor="Hand"/>
+
+                </Grid>
+
+            </GroupBox>
+
+
+            <GroupBox x:Name="grpOffice" Grid.Column="1" materialDesign:ColorZoneAssist.Mode="PrimaryDark"
+                      Grid.Row="7" FontSize="12" Padding="4">
+                <GroupBox.Header>
+                    Office
+                </GroupBox.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="5"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock x:Name="lblOffice1" Text="BKO" Grid.Column="1"
+                               Grid.Row="1" FontSize="11" Margin="5,3,5,3"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="lblOffice2" Text="Muzak" Grid.Column="2"
+                               Grid.Row="1" FontSize="11" Margin="5,3,5,3"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="lblOffice3" Text="Printer" Grid.Column="3"
+                               Grid.Row="1" FontSize="11" Margin="5,3,5,3"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="lblOffice4" Text="BCM50" Grid.Column="4"
+                               Grid.Row="1" FontSize="11" Margin="5,3,5,3"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="lblOffice5" Text="{Binding LabelOffice5}" Grid.Column="5"
+                               Grid.Row="1" FontSize="11" Margin="5,3,5,3"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="lblOffice6" Text=".253" Grid.Column="6"
+                               Grid.Row="1" FontSize="11" Margin="5,3,5,3"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="lblOffice7" Text=".250" Grid.Column="7"
+                               Grid.Row="1" FontSize="11" Margin="5,3,5,3"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="lblOffice8" Text="{Binding LabelOffice8}" Grid.Column="8"
+                               Grid.Row="1" FontSize="11" Margin="5,3,5,3"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBox Background="{Binding Office1}" Width="50" Grid.Column="1" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2" 
+                             HorizontalAlignment="Left" Cursor="Hand" IsReadOnly="True" 
+                             BorderBrush="LightGray" BorderThickness="1"
+                             ToolTip="{Binding InfoOffice1}"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Office1"/>
+                        </TextBox.InputBindings>
+                        <TextBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Copy Service Info" Command="{Binding CopyCommand}"
+                                          CommandParameter="Office1" IsEnabled="{Binding InfoEnabledOffice1}"/>
+                                <MenuItem Header="Connect to SMB" Command="{Binding SMBCommand}"
+                                          CommandParameter="Office1"/>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+
+                    <TextBox Width="50" Grid.Column="2" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2" Background="{Binding Office2}"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" 
+                             BorderBrush="LightGray" BorderThickness="1"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Office2"/>
+                        </TextBox.InputBindings>
+                    </TextBox>
+
+                    <TextBox Width="50" Grid.Column="3" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2" Background="{Binding Office3}"
+                             HorizontalAlignment="Left" Cursor="Hand" IsReadOnly="True" 
+                             BorderBrush="LightGray" BorderThickness="1"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Office3"/>
+                        </TextBox.InputBindings>
+                    </TextBox>
+
+                    <TextBox Width="50" Grid.Column="4" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2" Background="{Binding Office4}"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" 
+                             BorderBrush="LightGray" BorderThickness="1"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Office4"/>
+                        </TextBox.InputBindings>
+                    </TextBox>
+
+                    <TextBox Width="50" Grid.Column="5" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2" Background="{Binding Office5}"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" 
+                             BorderBrush="LightGray" BorderThickness="1"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Office5"/>
+                        </TextBox.InputBindings>
+                    </TextBox>
+
+                    <TextBox Width="50" Grid.Column="6" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2" Background="{Binding Office6}"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" 
+                             BorderBrush="LightGray" BorderThickness="1"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Office6"/>
+                        </TextBox.InputBindings>
+                    </TextBox>
+
+                    <TextBox Width="50" Grid.Column="7" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2" Background="{Binding Office7}"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" 
+                             BorderBrush="LightGray" BorderThickness="1"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Office7"/>
+                        </TextBox.InputBindings>
+                    </TextBox>
+
+                    <TextBox Width="50" Grid.Column="8" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2" Background="{Binding Office8}"
+                             HorizontalAlignment="Left" Cursor="Hand" IsReadOnly="True" 
+                             BorderBrush="LightGray" BorderThickness="1"
+                             ToolTip="{Binding InfoOffice8}"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Office8"/>
+                        </TextBox.InputBindings>
+                        <TextBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Copy Service Info" Command="{Binding CopyCommand}"
+                                          CommandParameter="Office8" IsEnabled="{Binding InfoEnabledOffice8}"/>
+                                <MenuItem Header="Connect to SMB" Command="{Binding SMBCommand}"
+                                          CommandParameter="Office8" IsEnabled="{Binding IsPizzaHut}"/>
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
+                    </TextBox>
+
+                    <TextBox x:Name="ReplyOffice1" Grid.Column="1" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                              Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <TextBox x:Name="ReplyOffice2" Grid.Column="2" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                              Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <TextBox x:Name="ReplyOffice3" Grid.Column="3" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                              Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <TextBox x:Name="ReplyOffice4" Grid.Column="4" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                              Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <TextBox x:Name="ReplyOffice5" Grid.Column="5" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                              Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <TextBox x:Name="ReplyOffice6" Grid.Column="6" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                              Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <TextBox x:Name="ReplyOffice7" Grid.Column="7" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                              Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <TextBox x:Name="ReplyOffice8" Grid.Column="8" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True" TextAlignment="Center"
+                              Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <CheckBox x:Name="CheckedOffice1" Content="Enable" Grid.Column="1" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"/>
+
+                    <CheckBox x:Name="CheckedOffice2" Content="Enable" Grid.Column="2" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"/>
+
+                    <CheckBox x:Name="CheckedOffice3" Content="Enable" Grid.Column="3" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"/>
+
+                    <CheckBox x:Name="CheckedOffice4" Content="Enable" Grid.Column="4" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"/>
+
+                    <CheckBox x:Name="CheckedOffice5" Content="Enable" Grid.Column="5" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"/>
+
+                    <CheckBox x:Name="CheckedOffice6" Content="Enable" Grid.Column="6" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"/>
+
+                    <CheckBox x:Name="CheckedOffice7" Content="Enable" Grid.Column="7" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"/>
+
+                    <CheckBox x:Name="CheckedOffice8" Content="Enable" Grid.Column="8" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"/>
+
+                </Grid>
+
+            </GroupBox>
+
+            <GroupBox x:Name="grpMobile" Grid.Column="1" materialDesign:ColorZoneAssist.Mode="PrimaryDark"
+                      Grid.Row="9" FontSize="12" Padding="4">
+                <GroupBox.Header>
+                    Mobile
+                </GroupBox.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition MinWidth="60"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Mobile 1" Grid.Column="1"
+                               Grid.Row="1" FontSize="11" Margin="5,0,5,0"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock Text="Mobile 2" Grid.Column="2"
+                               Grid.Row="1" FontSize="11" Margin="5,0,5,0"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock Text="Mobile 3" Grid.Column="3"
+                               Grid.Row="1" FontSize="11" Margin="5,0,5,0"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock Text="Mobile 4" Grid.Column="4"
+                               Grid.Row="1" FontSize="11" Margin="5,0,5,0"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock Text="Mobile 5" Grid.Column="5"
+                               Grid.Row="1" FontSize="11" Margin="5,0,5,0"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock Text="Mobile 6" Grid.Column="6"
+                               Grid.Row="1" FontSize="11" Margin="5,0,5,0"/>
+
+                    <TextBlock Text="Mobile 7" Grid.Column="7"
+                               Grid.Row="1" FontSize="11" Margin="5,0,5,0"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock Text="Mobile 8" Grid.Column="8"
+                               Grid.Row="1" FontSize="11" Margin="5,0,5,0"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock Text="Mobile 9" Grid.Column="9"
+                               Grid.Row="1" FontSize="11" Margin="5,0,5,0"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBlock Text="Mobile 10" Grid.Column="10"
+                               Grid.Row="1" FontSize="11" Margin="5,0,5,0"
+                               HorizontalAlignment="Left"/>
+
+                    <TextBox Background="{Binding Mobile1}" Width="50" Grid.Column="1" BorderBrush="LightGray" BorderThickness="1"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2" Cursor="Hand" IsReadOnly="True" 
+                             HorizontalAlignment="Left" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Mobile1"/>
+                        </TextBox.InputBindings>
+                    </TextBox>
+
+                    <TextBox Background="{Binding Mobile2}" Width="50" Grid.Column="2" BorderBrush="LightGray" BorderThickness="1"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2" Cursor="Hand" IsReadOnly="True" 
+                             HorizontalAlignment="Left" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Mobile2"/>
+                        </TextBox.InputBindings>
+                    </TextBox>
+
+                    <TextBox Background="{Binding Mobile3}" Width="50" Grid.Column="3" BorderBrush="LightGray" BorderThickness="1"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2" Cursor="Hand" IsReadOnly="True" 
+                             HorizontalAlignment="Left" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Mobile3"/>
+                        </TextBox.InputBindings>
+                    </TextBox>
+
+                    <TextBox Background="{Binding Mobile4}" Width="50" Grid.Column="4" BorderBrush="LightGray" BorderThickness="1"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2" Cursor="Hand" IsReadOnly="True" 
+                             HorizontalAlignment="Left" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Mobile4"/>
+                        </TextBox.InputBindings>
+                    </TextBox>
+
+                    <TextBox Background="{Binding Mobile5}" Width="50" Grid.Column="5" BorderBrush="LightGray" BorderThickness="1"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2"  Cursor="Hand" IsReadOnly="True" 
+                             HorizontalAlignment="Left" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Mobile5"/>
+                        </TextBox.InputBindings>
+                    </TextBox>
+
+                    <TextBox Background="{Binding Mobile6}" Width="50" Grid.Column="6" BorderBrush="LightGray" BorderThickness="1"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2"  Cursor="Hand" IsReadOnly="True" 
+                             HorizontalAlignment="Left" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Mobile6"/>
+                        </TextBox.InputBindings>
+                    </TextBox>
+
+                    <TextBox Background="{Binding Mobile7}" Width="50" Grid.Column="7" BorderBrush="LightGray" BorderThickness="1"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2"  Cursor="Hand" IsReadOnly="True" 
+                             HorizontalAlignment="Left" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Mobile7"/>
+                        </TextBox.InputBindings>
+                    </TextBox>
+
+                    <TextBox Background="{Binding Mobile8}" Width="50" Grid.Column="8" BorderBrush="LightGray" BorderThickness="1"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2"  Cursor="Hand" IsReadOnly="True" 
+                             HorizontalAlignment="Left" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Mobile8"/>
+                        </TextBox.InputBindings>
+                    </TextBox>
+
+                    <TextBox Background="{Binding Mobile9}" Width="50" Grid.Column="9" BorderBrush="LightGray" BorderThickness="1"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2"  Cursor="Hand" IsReadOnly="True" 
+                             HorizontalAlignment="Left" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Mobile9"/>
+                        </TextBox.InputBindings>
+                    </TextBox>
+
+                    <TextBox Background="{Binding Mobile10}" Width="50" Grid.Column="10" BorderBrush="LightGray" BorderThickness="1"
+                             Grid.Row="2" FontSize="11" Margin="3,10,3,2"  Cursor="Hand" IsReadOnly="True" 
+                             HorizontalAlignment="Left" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             Style="{StaticResource MaterialDesignTextBox}" Height="25">
+                        <TextBox.InputBindings>
+                            <MouseBinding Command="{Binding ConnectDeviceCommand}" MouseAction="LeftClick"
+                                          CommandParameter="Mobile10"/>
+                        </TextBox.InputBindings>
+                    </TextBox>
+
+                    <TextBox Grid.Column="1" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True"
+                             Text="{Binding ReplyMobile1}" TextAlignment="Center"
+                              Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <TextBox Grid.Column="2" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True"
+                             Text="{Binding ReplyMobile2}" TextAlignment="Center"
+                              Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <TextBox Grid.Column="3" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True"
+                             Text="{Binding ReplyMobile3}" TextAlignment="Center"
+                              Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <TextBox Grid.Column="4" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True"
+                             Text="{Binding ReplyMobile4}" TextAlignment="Center"
+                              Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <TextBox Grid.Column="5" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True"
+                             Text="{Binding ReplyMobile5}" TextAlignment="Center"
+                              Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <TextBox Grid.Column="6" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True"
+                             Text="{Binding ReplyMobile6}" TextAlignment="Center"
+                              Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <TextBox Grid.Column="7" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True"
+                             Text="{Binding ReplyMobile7}" TextAlignment="Center"
+                              Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <TextBox Grid.Column="8" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True"
+                             Text="{Binding ReplyMobile8}" TextAlignment="Center"
+                              Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <TextBox Grid.Column="9" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True"
+                             Text="{Binding ReplyMobile9}" TextAlignment="Center"
+                              Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <TextBox Grid.Column="10" Grid.Row="3" Width="50" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             FontSize="11" Margin="3" BorderBrush="LightGray" BorderThickness="1"
+                             HorizontalAlignment="Left" Cursor="Arrow" IsReadOnly="True"
+                             Text="{Binding ReplyMobile10}" TextAlignment="Center"
+                              Style="{StaticResource MaterialDesignTextBox}"/>
+
+                    <CheckBox Content="Enable" Grid.Column="1" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"
+                              IsChecked="{Binding CheckedMobile1}"/>
+
+                    <CheckBox Content="Enable" Grid.Column="2" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"
+                              IsChecked="{Binding CheckedMobile2}"/>
+
+                    <CheckBox Content="Enable" Grid.Column="3" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"
+                              IsChecked="{Binding CheckedMobile3}"/>
+
+                    <CheckBox Content="Enable" Grid.Column="4" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"
+                              IsChecked="{Binding CheckedMobile4}"/>
+
+                    <CheckBox Content="Enable" Grid.Column="5" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"
+                              IsChecked="{Binding CheckedMobile5}"/>
+
+                    <CheckBox Content="Enable" Grid.Column="6" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"
+                              IsChecked="{Binding CheckedMobile6}"/>
+
+                    <CheckBox Content="Enable" Grid.Column="7" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"
+                              IsChecked="{Binding CheckedMobile7}"/>
+
+                    <CheckBox Content="Enable" Grid.Column="8" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"
+                              IsChecked="{Binding CheckedMobile8}"/>
+
+                    <CheckBox Content="Enable" Grid.Column="9" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"
+                              IsChecked="{Binding CheckedMobile9}"/>
+
+                    <CheckBox Content="Enable" Grid.Column="10" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                              Grid.Row="4" FontSize="11" Margin="2" HorizontalAlignment="Left" Cursor="Hand"
+                              IsChecked="{Binding CheckedMobile10}"/>
+
+                </Grid>
+
+            </GroupBox>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="11">
+                <CheckBox x:Name="CheckedAll" Content="Check All" Style="{StaticResource MaterialDesignAccentCheckBox}"
+                      Margin="5,10" VerticalAlignment="Center" Cursor="Hand"/>
+
+                <Button Style="{StaticResource MaterialDesignFlatDarkBgButton}" Content="Clear" Margin="5,20"
+                        VerticalAlignment="Center" MinWidth="40" FontSize="12"
+                        Command="{Binding ClearCommand}" materialDesign:RippleAssist.Feedback="#65fffd"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                        materialDesign:ButtonAssist.CornerRadius="4"/>
+
+                <Button Style="{StaticResource MaterialDesignFlatDarkBgButton}" x:Name="btnRun" Content="Run" Margin="5,20"
+                        VerticalAlignment="Center" MinWidth="40" FontSize="12" Command="{Binding RunCommand}"
+                        IsEnabled="{Binding IsNotRunning}" materialDesign:RippleAssist.Feedback="#65fffd"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                        materialDesign:ButtonAssist.CornerRadius="4"/>
+
+                <Button Style="{StaticResource MaterialDesignFlatDarkBgButton}" x:Name="btnStop" Content="Stop" Margin="5,20"
+                        VerticalAlignment="Center" MinWidth="40" FontSize="12" Command="{Binding StopCommand}"
+                        IsEnabled="{Binding IsRunning}" materialDesign:RippleAssist.Feedback="#65fffd"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                        materialDesign:ButtonAssist.CornerRadius="4"/>
+            </StackPanel>
+
+        </Grid>
+    </Border>
+</Window>
