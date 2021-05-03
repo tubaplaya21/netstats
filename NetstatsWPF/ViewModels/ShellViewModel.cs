@@ -2227,7 +2227,7 @@ namespace Netstats.ViewModels
                 try
                 {
                     ngposCheck.Open();
-                    NpgsqlCommand command = new NpgsqlCommand("SELECT reg, service_tag, model, last_updated, device_on FROM ngpos.ng_check WHERE store=" + _storeNumber, ngposCheck);
+                    NpgsqlCommand command = new NpgsqlCommand("SELECT reg, service_tag, model, last_updated, device_on, corp_ip FROM ngpos.ng_check WHERE store=" + _storeNumber, ngposCheck);
                     NpgsqlDataReader reader = command.ExecuteReader();
 
                     while (reader.Read())
@@ -2236,10 +2236,12 @@ namespace Netstats.ViewModels
                         string temp;
                         int time;
                         string newTime;
+                        string whprocessor;
                         regNumber = reader.GetInt32(0).ToString();
                         time = reader.GetInt32(3);
                         newTime = ConvertToDate(time).ToString();
-                        temp = "Model: " + reader.GetString(2) + "\nS/N: " + reader.GetString(1) + "\nLast updated: " + newTime;
+                        whprocessor = reader.GetString(5);
+                        temp = "Model: " + reader.GetString(2) + "\nS/N: " + reader.GetString(1) + "\nLast updated: " + newTime + "\n" + whprocessor;
                         int hasVerifone = reader.GetInt32(4);
 
                         if(Convert.ToInt32(regNumber) <= 10)
