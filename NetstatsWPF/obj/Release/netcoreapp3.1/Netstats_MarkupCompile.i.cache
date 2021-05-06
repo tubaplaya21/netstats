@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\bmiller\source\repos\netstats\NetstatsWPF\obj\Release\netcoreapp3.1\
+P:\Netstats\NetstatsWPF\obj\Release\netcoreapp3.1\
 Netstats
 none
 false
 TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1;
-C:\Users\bmiller\source\repos\netstats\NetstatsWPF\App.xaml
+P:\Netstats\NetstatsWPF\App.xaml
 4-409168596
 
 29-211191043
-2101583208591
+210-2026858030
 Styles\Buttons.xaml;Styles\TextBoxes.xaml;Views\MessageBoxView.xaml;Views\ShellView.xaml;
 
-False
+True
 
