@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
-    <AssemblyVersion>1.5.6.4</AssemblyVersion>
-    <FileVersion>1.5.6.4</FileVersion>
+    <AssemblyVersion>1.5.6.5</AssemblyVersion>
+    <FileVersion>1.5.6.5</FileVersion>
     <ApplicationIcon>heartbeat.ico</ApplicationIcon>
     <SignAssembly>false</SignAssembly>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>

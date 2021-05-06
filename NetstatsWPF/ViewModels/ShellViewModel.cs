@@ -144,176 +144,213 @@ namespace Netstats.ViewModels
         public bool CheckedReg1 { get; set; }
         public string InfoReg1 { get; set; }
         public bool InfoEnabledReg1 { get; set; }
+        public string RegIp1 { get; set; }
         public SolidColorBrush Reg2 { get; set; }
         public SolidColorBrush LabelReg2 { get; set; }
         public string ReplyReg2 { get; set; }
         public bool CheckedReg2 { get; set; }
         public string InfoReg2 { get; set; }
         public bool InfoEnabledReg2 { get; set; }
+        public string RegIp2 { get; set; }
         public SolidColorBrush Reg3 { get; set; }
         public SolidColorBrush LabelReg3 { get; set; }
         public string ReplyReg3 { get; set; }
         public bool CheckedReg3 { get; set; }
         public string InfoReg3 { get; set; }
         public bool InfoEnabledReg3 { get; set; }
+        public string RegIp3 { get; set; }
         public SolidColorBrush Reg4 { get; set; }
         public SolidColorBrush LabelReg4 { get; set; }
         public string ReplyReg4 { get; set; }
         public bool CheckedReg4 { get; set; }
         public string InfoReg4 { get; set; }
         public bool InfoEnabledReg4 { get; set; }
+        public string RegIp4 { get; set; }
         public SolidColorBrush Reg5 { get; set; }
         public SolidColorBrush LabelReg5 { get; set; }
         public string ReplyReg5 { get; set; }
         public bool CheckedReg5 { get; set; }
         public string InfoReg5 { get; set; }
         public bool InfoEnabledReg5 { get; set; }
+        public string RegIp5 { get; set; }
         public SolidColorBrush Reg6 { get; set; }
         public SolidColorBrush LabelReg6 { get; set; }
         public string ReplyReg6 { get; set; }
         public bool CheckedReg6 { get; set; }
         public string InfoReg6 { get; set; }
         public bool InfoEnabledReg6 { get; set; }
+        public string RegIp6 { get; set; }
         public SolidColorBrush Reg7 { get; set; }
         public SolidColorBrush LabelReg7 { get; set; }
         public string ReplyReg7 { get; set; }
         public bool CheckedReg7 { get; set; }
         public string InfoReg7 { get; set; }
         public bool InfoEnabledReg7 { get; set; }
+        public string RegIp7 { get; set; }
         public SolidColorBrush Reg8 { get; set; }
         public SolidColorBrush LabelReg8 { get; set; }
         public string ReplyReg8 { get; set; }
         public bool CheckedReg8 { get; set; }
         public string InfoReg8 { get; set; }
         public bool InfoEnabledReg8 { get; set; }
+        public string RegIp8 { get; set; }
         public SolidColorBrush Reg9 { get; set; }
         public SolidColorBrush LabelReg9 { get; set; }
         public string ReplyReg9 { get; set; }
         public bool CheckedReg9 { get; set; }
         public string InfoReg9 { get; set; }
         public bool InfoEnabledReg9 { get; set; }
+        public string RegIp9 { get; set; }
         public SolidColorBrush Reg10 { get; set; }
         public SolidColorBrush LabelReg10 { get; set; }
         public string ReplyReg10 { get; set; }
         public bool CheckedReg10 { get; set; }
         public string InfoReg10 { get; set; }
         public bool InfoEnabledReg10 { get; set; }
+        public string RegIp10 { get; set; }
         public SolidColorBrush Kms1 { get; set; }
         public string ReplyKms1 { get; set; }
         public bool CheckedKms1 { get; set; }
         public string InfoKms1 { get; set; }
         public string LabelKms1 { get; set; }
         public bool InfoEnabledKms1 { get; set; }
+        public string KmsIp1 { get; set; }
         public SolidColorBrush Kms2 { get; set; }
         public string ReplyKms2 { get; set; }
         public bool CheckedKms2 { get; set; }
         public string InfoKms2 { get; set; }
         public string LabelKms2 { get; set; }
         public bool InfoEnabledKms2 { get; set; }
+        public string KmsIp2 { get; set; }
         public SolidColorBrush Kms3 { get; set; }
         public string ReplyKms3 { get; set; }
         public bool CheckedKms3 { get; set; }
         public string InfoKms3 { get; set; }
         public string LabelKms3 { get; set; }
         public bool InfoEnabledKms3 { get; set; }
+        public string KmsIp3 { get; set; }
         public SolidColorBrush Kms4 { get; set; }
         public string ReplyKms4 { get; set; }
         public bool CheckedKms4 { get; set; }
         public string InfoKms4 { get; set; }
         public string LabelKms4 { get; set; }
         public bool InfoEnabledKms4 { get; set; }
+        public string KmsIp4 { get; set; }
         public SolidColorBrush Kms5 { get; set; }
         public string ReplyKms5 { get; set; }
         public bool CheckedKms5 { get; set; }
         public string InfoKms5 { get; set; }
         public string LabelKms5 { get; set; }
         public bool InfoEnabledKms5 { get; set; }
+        public string KmsIp5 { get; set; }
         public SolidColorBrush Kms6 { get; set; }
         public string ReplyKms6 { get; set; }
         public bool CheckedKms6 { get; set; }
         public string InfoKms6 { get; set; }
         public string LabelKms6 { get; set; }
         public bool InfoEnabledKms6 { get; set; }
+        public string KmsIp6 { get; set; }
         public SolidColorBrush Kms7 { get; set; }
         public string ReplyKms7 { get; set; }
         public bool CheckedKms7 { get; set; }
         public string InfoKms7 { get; set; }
         public string LabelKms7 { get; set; }
         public bool InfoEnabledKms7 { get; set; }
+        public string KmsIp7 { get; set; }
         public SolidColorBrush Kms8 { get; set; }
         public string ReplyKms8 { get; set; }
         public bool CheckedKms8 { get; set; }
         public string InfoKms8 { get; set; }
         public string LabelKms8 { get; set; }
         public bool InfoEnabledKms8 { get; set; }
+        public string KmsIp8 { get; set; }
         public SolidColorBrush Kms9 { get; set; }
         public string ReplyKms9 { get; set; }
         public bool CheckedKms9 { get; set; }
         public string InfoKms9 { get; set; }
         public string LabelKms9 { get; set; }
         public bool InfoEnabledKms9 { get; set; }
+        public string KmsIp9 { get; set; }
         public SolidColorBrush Office1 { get; set; }
         public string ReplyOffice1 { get; set; }
         public bool CheckedOffice1 { get; set; }
         public string InfoOffice1 { get; set; }
         public bool InfoEnabledOffice1 { get; set; }
+        public string OfficeIp1 { get; set; }
         public SolidColorBrush Office2 { get; set; }
         public string ReplyOffice2 { get; set; }
         public bool CheckedOffice2 { get; set; }
+        public string OfficeIp2 { get; set; }
         public SolidColorBrush Office3 { get; set; }
         public string ReplyOffice3 { get; set; }
         public bool CheckedOffice3 { get; set; }
+        public string OfficeIp3 { get; set; }
         public SolidColorBrush Office4 { get; set; }
         public string ReplyOffice4 { get; set; }
         public bool CheckedOffice4 { get; set; }
+        public string OfficeIp4 { get; set; }
         public SolidColorBrush Office5 { get; set; }
         public string ReplyOffice5 { get; set; }
         public bool CheckedOffice5 { get; set; }
         public string LabelOffice5 { get; set; }
+        public string OfficeIp5 { get; set; }
         public SolidColorBrush Office6 { get; set; }
         public string ReplyOffice6 { get; set; }
         public bool CheckedOffice6 { get; set; }
+        public string OfficeIp6 { get; set; }
         public SolidColorBrush Office7 { get; set; }
         public string ReplyOffice7 { get; set; }
         public bool CheckedOffice7 { get; set; }
+        public string OfficeIp7 { get; set; }
         public SolidColorBrush Office8 { get; set; }
         public string ReplyOffice8 { get; set; }
         public bool CheckedOffice8 { get; set; }
         public string InfoOffice8 { get; set; }
         public string LabelOffice8 { get; set; }
         public bool InfoEnabledOffice8 { get; set; }
+        public string OfficeIp8 { get; set; }
         public SolidColorBrush Mobile1 { get; set; }
         public string ReplyMobile1 { get; set; }
         public bool CheckedMobile1 { get; set; }
+        public string MobileIp1 { get; set; }
         public SolidColorBrush Mobile2 { get; set; }
         public string ReplyMobile2 { get; set; }
         public bool CheckedMobile2 { get; set; }
+        public string MobileIp2 { get; set; }
         public SolidColorBrush Mobile3 { get; set; }
         public string ReplyMobile3 { get; set; }
         public bool CheckedMobile3 { get; set; }
+        public string MobileIp3 { get; set; }
         public SolidColorBrush Mobile4 { get; set; }
         public string ReplyMobile4 { get; set; }
         public bool CheckedMobile4 { get; set; }
+        public string MobileIp4 { get; set; }
         public SolidColorBrush Mobile5 { get; set; }
         public string ReplyMobile5 { get; set; }
         public bool CheckedMobile5 { get; set; }
+        public string MobileIp5 { get; set; }
         public SolidColorBrush Mobile6 { get; set; }
         public string ReplyMobile6 { get; set; }
         public bool CheckedMobile6 { get; set; }
+        public string MobileIp6 { get; set; }
         public SolidColorBrush Mobile7 { get; set; }
         public string ReplyMobile7 { get; set; }
         public bool CheckedMobile7 { get; set; }
+        public string MobileIp7 { get; set; }
         public SolidColorBrush Mobile8 { get; set; }
         public string ReplyMobile8 { get; set; }
         public bool CheckedMobile8 { get; set; }
+        public string MobileIp8 { get; set; }
         public SolidColorBrush Mobile9 { get; set; }
         public string ReplyMobile9 { get; set; }
         public bool CheckedMobile9 { get; set; }
+        public string MobileIp9 { get; set; }
         public SolidColorBrush Mobile10 { get; set; }
         public string ReplyMobile10 { get; set; }
         public bool CheckedMobile10 { get; set; }
+        public string MobileIp10 { get; set; }
 
-        
+
 
         public SolidColorBrush LightRed { get; set; }
         public SolidColorBrush Red { get; set; }
@@ -1994,6 +2031,10 @@ namespace Netstats.ViewModels
                 //    ngposCheck.Close();
                 //}
 
+
+                
+
+
                 new Thread(new ParameterizedThreadStart(PingDevice)).Start("Reg1");
                 new Thread(new ParameterizedThreadStart(PingDevice)).Start("Reg2");
                 new Thread(new ParameterizedThreadStart(PingDevice)).Start("Reg3");
@@ -2332,6 +2373,16 @@ namespace Netstats.ViewModels
 
         private void PingDevice(object device)
         {
+            string address;
+            if (StoreNumber[2] != '0')
+            {
+                address = "10." + StoreNumber.Substring(0, 2) + "." + StoreNumber.Substring(2) + ".";
+            }
+            else
+            {
+                address = "10." + StoreNumber.Substring(0, 2) + "." + StoreNumber[3] + ".";
+            }
+
             int number = Convert.ToInt32(StoreNumber);
             int val = 0;
             bool devicePinging = false;
@@ -2340,182 +2391,227 @@ namespace Netstats.ViewModels
             {
                 case "Reg1":
                     val = 1;
+                    RegIp1 = address + "1";
                     break;
 
                 case "Reg2":
                     val = 2;
+                    RegIp2 = address + "2";
                     break;
 
                 case "Reg3":
                     val = 3;
+                    RegIp3 = address + "3";
                     break;
 
                 case "Reg4":
                     val = 4;
+                    RegIp4 = address + "4";
                     break;
 
                 case "Reg5":
                     val = 5;
+                    RegIp5 = address + "5";
                     break;
 
                 case "Reg6":
                     val = 6;
+                    RegIp6 = address + "6";
                     break;
 
                 case "Reg7":
                     val = 7;
+                    RegIp7 = address + "7";
                     break;
 
                 case "Reg8":
                     val = 8;
+                    RegIp8 = address + "8";
                     break;
 
                 case "Reg9":
                     val = 9;
+                    RegIp9 = address + "9";
                     break;
 
                 case "Reg10":
                     val = 10;
+                    RegIp10 = address + "10";
                     break;
 
                 case "Kms1":
                     val = 200;
+                    KmsIp1 = address + "200";
                     if (IsWendys)
                     {
                         val = 81;
+                        KmsIp1 = address + "81";
                     }
                     break;
 
                 case "Kms2":
                     val = 201;
+                    KmsIp2 = address + "201";
                     if (IsWendys)
                     {
                         val = 82;
+                        KmsIp2 = address + "82";
                     }
                     break;
 
                 case "Kms3":
                     val = 202;
+                    KmsIp3 = address + "202";
                     if (IsWendys)
                     {
                         val = 83;
+                        KmsIp3 = address + "83";
                     }
                     break;
 
                 case "Kms4":
                     val = 203;
+                    KmsIp4 = address + "203";
                     if (IsWendys)
                     {
                         val = 84;
+                        KmsIp4 = address + "84";
                     }
                     break;
 
                 case "Kms5":
                     val = 207;
+                    KmsIp5 = address + "207";
                     if (IsWendys)
                     {
                         val = 85;
+                        KmsIp5 = address + "85";
                     }
                     break;
 
                 case "Kms6":
                     val = 208;
+                    KmsIp6 = address + "208";
                     if (IsWendys)
                     {
                         val = 86;
+                        KmsIp6 = address + "86";
                     }
                     break;
 
                 case "Kms7":
                     val = 209;
+                    KmsIp7 = address + "209";
                     if (IsWendys)
                     {
                         val = 87;
+                        KmsIp7 = address + "87";
                     }
                     break;
 
                 case "Kms8":
                     val = 212;
+                    KmsIp8 = address + "212";
                     if (IsWendys)
                     {
                         val = 88;
+                        KmsIp8 = address + "88";
                     }
                     break;
 
                 case "Kms9":
                     val = 219;
+                    KmsIp9 = address + "219";
                     if (IsWendys)
                     {
                         val = 89;
+                        KmsIp9 = address + "89";
                     }
                     break;
 
                 case "Office1":
                     val = 254;
+                    OfficeIp1 = address + "254";
                     break;
 
                 case "Office2":
                     val = 15;
+                    OfficeIp2 = address + "15";
                     break;
 
                 case "Office3":
                     val = 16;
+                    OfficeIp3 = address + "16";
                     break;
 
                 case "Office4":
                     val = 220;
+                    OfficeIp4 = address + "220";
                     break;
 
                 case "Office5":
                     val = 100;
+                    OfficeIp5 = address + "100";
                     break;
 
                 case "Office6":
                     val = 253;
+                    OfficeIp6 = address + "253";
                     break;
 
                 case "Office7":
                     val = 250;
+                    OfficeIp7 = address + "250";
                     break;
 
                 case "Mobile1":
                     val = 30;
+                    MobileIp1 = address + "30";
                     break;
 
                 case "Mobile2":
                     val = 31;
+                    MobileIp2 = address + "31";
                     break;
 
                 case "Mobile3":
                     val = 32;
+                    MobileIp3 = address + "32";
                     break;
 
                 case "Mobile4":
                     val = 33;
+                    MobileIp4 = address + "33";
                     break;
 
                 case "Mobile5":
                     val = 34;
+                    MobileIp5 = address + "34";
                     break;
 
                 case "Mobile6":
                     val = 35;
+                    MobileIp6 = address + "35";
                     break;
 
                 case "Mobile7":
                     val = 36;
+                    MobileIp7 = address + "36";
                     break;
 
                 case "Mobile8":
                     val = 37;
+                    MobileIp8 = address + "37";
                     break;
 
                 case "Mobile9":
                     val = 38;
+                    MobileIp9 = address + "38";
                     break;
 
                 case "Mobile10":
                     val = 39;
+                    MobileIp10 = address + "39";
                     break;
 
                 case "Verifone1":
@@ -2560,9 +2656,11 @@ namespace Netstats.ViewModels
 
                 case "Office8":
                     val = 12;
+                    OfficeIp8 = address + "12";
                     if (IsWendys)
                     {
                         val = 236;
+                        OfficeIp8 = address + "236";
                     }
                     break;
             }
@@ -3244,6 +3342,44 @@ namespace Netstats.ViewModels
             InfoKms9 = null;
             InfoOffice1 = null;
             InfoOffice8 = null;
+
+            RegIp1 = null;
+            RegIp2 = null;
+            RegIp3 = null;
+            RegIp4 = null;
+            RegIp5 = null;
+            RegIp6 = null;
+            RegIp7 = null;
+            RegIp8 = null;
+            RegIp9 = null;
+            RegIp10 = null;
+            KmsIp1 = null;
+            KmsIp2 = null;
+            KmsIp3 = null;
+            KmsIp4 = null;
+            KmsIp5 = null;
+            KmsIp6 = null;
+            KmsIp7 = null;
+            KmsIp8 = null;
+            KmsIp9 = null;
+            OfficeIp1 = null;
+            OfficeIp2 = null;
+            OfficeIp3 = null;
+            OfficeIp4 = null;
+            OfficeIp5 = null;
+            OfficeIp6 = null;
+            OfficeIp7 = null;
+            OfficeIp8 = null;
+            MobileIp1 = null;
+            MobileIp2 = null;
+            MobileIp3 = null;
+            MobileIp4 = null;
+            MobileIp5 = null;
+            MobileIp6 = null;
+            MobileIp7 = null;
+            MobileIp8 = null;
+            MobileIp9 = null;
+            MobileIp10 = null;
         }
         #endregion
 

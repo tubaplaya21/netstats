@@ -249,42 +249,43 @@
 
                     <TextBlock x:Name="lblReg1" Text="Register 1" Grid.Column="1"
                                Grid.Row="1" FontSize="11" Margin="5,0,5,0" Foreground="{Binding LabelReg1}"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding RegIp1}"/>
 
                     <TextBlock x:Name="lblReg2" Text="Register 2" Grid.Column="2"
                                Grid.Row="1" FontSize="11" Margin="5,0,5,0" Foreground="{Binding LabelReg2}"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding RegIp2}"/>
 
                     <TextBlock x:Name="lblReg3" Text="Register 3" Grid.Column="3"
                                Grid.Row="1" FontSize="11" Margin="5,0,5,0" Foreground="{Binding LabelReg3}"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding RegIp3}"/>
 
                     <TextBlock x:Name="lblReg4" Text="Register 4" Grid.Column="4"
                                Grid.Row="1" FontSize="11" Margin="5,0,5,0" Foreground="{Binding LabelReg4}"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding RegIp4}"/>
 
                     <TextBlock x:Name="lblReg5" Text="Register 5" Grid.Column="5"
                                Grid.Row="1" FontSize="11" Margin="5,0,5,0" Foreground="{Binding LabelReg5}"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding RegIp5}"/>
 
                     <TextBlock x:Name="lblReg6" Text="Register 6" Grid.Column="6"
-                               Grid.Row="1" FontSize="11" Margin="5,0,5,0"  Foreground="{Binding LabelReg6}"/>
+                               Grid.Row="1" FontSize="11" Margin="5,0,5,0"  Foreground="{Binding LabelReg6}"
+                               HorizontalAlignment="Left" ToolTip="{Binding RegIp6}"/>
 
                     <TextBlock x:Name="lblReg7" Text="Register 7" Grid.Column="7"
                                Grid.Row="1" FontSize="11" Margin="5,0,5,0" Foreground="{Binding LabelReg7}"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding RegIp7}"/>
 
                     <TextBlock x:Name="lblReg8" Text="Register 8" Grid.Column="8"
                                Grid.Row="1" FontSize="11" Margin="5,0,5,0" Foreground="{Binding LabelReg8}"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding RegIp8}"/>
 
                     <TextBlock x:Name="lblReg9" Text="Register 9" Grid.Column="9"
                                Grid.Row="1" FontSize="11" Margin="5,0,5,0" Foreground="{Binding LabelReg9}"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding RegIp9}"/>
 
                     <TextBlock x:Name="lblReg10" Text="Register 10" Grid.Column="10"
                                Grid.Row="1" FontSize="11" Margin="5,0,5,0" Foreground="{Binding LabelReg10}"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding RegIp10}"/>
 
                     <TextBox Background="{Binding Reg1}" MinWidth="50" Grid.Column="1" BorderBrush="LightGray" BorderThickness="1"
                              Grid.Row="2" FontSize="11" Margin="3,10,3,2" Cursor="Hand" IsReadOnly="True" Focusable="False"
@@ -607,39 +608,40 @@
 
                     <TextBlock x:Name="lblKms1" Text="{Binding LabelKms1}" Grid.Column="1"
                                Grid.Row="1" FontSize="11" Margin="5,3,0,3"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding KmsIp1}"/>
 
                     <TextBlock x:Name="lblKms2" Text="{Binding LabelKms2}" Grid.Column="2"
                                Grid.Row="1" FontSize="11" Margin="5,3,0,3"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding KmsIp2}"/>
 
                     <TextBlock x:Name="lblKms3" Text="{Binding LabelKms3}" Grid.Column="3"
                                Grid.Row="1" FontSize="11" Margin="5,3,0,3"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding KmsIp3}"/>
 
                     <TextBlock x:Name="lblKms4" Text="{Binding LabelKms4}" Grid.Column="4"
                                Grid.Row="1" FontSize="11" Margin="5,3,0,3"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding KmsIp4}"/>
 
                     <TextBlock x:Name="lblKms5" Text="{Binding LabelKms5}" Grid.Column="5"
                                Grid.Row="1" FontSize="11" Margin="5,3,0,3"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding KmsIp5}"/>
 
                     <TextBlock x:Name="lblKms6" Text="{Binding LabelKms6}" Grid.Column="6"
                                Grid.Row="1" FontSize="11" Margin="5,3,0,3"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding KmsIp6}"/>
 
                     <TextBlock x:Name="lblKms7" Text="{Binding LabelKms7}" Grid.Column="7"
                                Grid.Row="1" FontSize="11" Margin="5,3,0,3"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding KmsIp7}"/>
 
                     <TextBlock x:Name="lblKms8" Text="{Binding LabelKms8}" Grid.Column="8"
                                Grid.Row="1" FontSize="11" Margin="5,3,0,3"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding KmsIp8}"/>
 
                     <TextBlock x:Name="lblKms9" Text="{Binding LabelKms9}" Grid.Column="9"
                                Grid.Row="1" FontSize="11" Margin="5,3,0,3"
-                               HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
+                               HorizontalAlignment="Left" Grid.ColumnSpan="2"
+                                ToolTip="{Binding KmsIp9}"/>
 
                     <TextBox Background="{Binding Kms1}" Width="50" Grid.Column="1" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                              Grid.Row="2" FontSize="11" Margin="3,10,3,2"  BorderBrush="LightGray" BorderThickness="1" Height="25"
@@ -924,35 +926,35 @@
 
                     <TextBlock x:Name="lblOffice1" Text="BKO" Grid.Column="1"
                                Grid.Row="1" FontSize="11" Margin="5,3,5,3"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding OfficeIp1}"/>
 
                     <TextBlock x:Name="lblOffice2" Text="Muzak" Grid.Column="2"
                                Grid.Row="1" FontSize="11" Margin="5,3,5,3"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding OfficeIp2}"/>
 
                     <TextBlock x:Name="lblOffice3" Text="Printer" Grid.Column="3"
                                Grid.Row="1" FontSize="11" Margin="5,3,5,3"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding OfficeIp3}"/>
 
                     <TextBlock x:Name="lblOffice4" Text="BCM50" Grid.Column="4"
                                Grid.Row="1" FontSize="11" Margin="5,3,5,3"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding OfficeIp4}"/>
 
                     <TextBlock x:Name="lblOffice5" Text="{Binding LabelOffice5}" Grid.Column="5"
                                Grid.Row="1" FontSize="11" Margin="5,3,5,3"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding OfficeIp5}"/>
 
                     <TextBlock x:Name="lblOffice6" Text=".253" Grid.Column="6"
                                Grid.Row="1" FontSize="11" Margin="5,3,5,3"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding OfficeIp6}"/>
 
                     <TextBlock x:Name="lblOffice7" Text=".250" Grid.Column="7"
                                Grid.Row="1" FontSize="11" Margin="5,3,5,3"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding OfficeIp7}"/>
 
                     <TextBlock x:Name="lblOffice8" Text="{Binding LabelOffice8}" Grid.Column="8"
                                Grid.Row="1" FontSize="11" Margin="5,3,5,3"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding OfficeIp8}"/>
 
                     <TextBox Background="{Binding Office1}" Width="50" Grid.Column="1" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                              Grid.Row="2" FontSize="11" Margin="3,10,3,2" 
@@ -1160,42 +1162,42 @@
 
                     <TextBlock Text="Mobile 1" Grid.Column="1"
                                Grid.Row="1" FontSize="11" Margin="5,0,5,0"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding MobileIp1}"/>
 
                     <TextBlock Text="Mobile 2" Grid.Column="2"
                                Grid.Row="1" FontSize="11" Margin="5,0,5,0"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding MobileIp2}"/>
 
                     <TextBlock Text="Mobile 3" Grid.Column="3"
                                Grid.Row="1" FontSize="11" Margin="5,0,5,0"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding MobileIp3}"/>
 
                     <TextBlock Text="Mobile 4" Grid.Column="4"
                                Grid.Row="1" FontSize="11" Margin="5,0,5,0"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding MobileIp4}"/>
 
                     <TextBlock Text="Mobile 5" Grid.Column="5"
                                Grid.Row="1" FontSize="11" Margin="5,0,5,0"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding MobileIp5}"/>
 
                     <TextBlock Text="Mobile 6" Grid.Column="6"
-                               Grid.Row="1" FontSize="11" Margin="5,0,5,0"/>
+                               Grid.Row="1" FontSize="11" Margin="5,0,5,0" ToolTip="{Binding MobileIp6}"/>
 
                     <TextBlock Text="Mobile 7" Grid.Column="7"
                                Grid.Row="1" FontSize="11" Margin="5,0,5,0"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding MobileIp7}"/>
 
                     <TextBlock Text="Mobile 8" Grid.Column="8"
                                Grid.Row="1" FontSize="11" Margin="5,0,5,0"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding MobileIp8}"/>
 
                     <TextBlock Text="Mobile 9" Grid.Column="9"
                                Grid.Row="1" FontSize="11" Margin="5,0,5,0"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding MobileIp9}"/>
 
                     <TextBlock Text="Mobile 10" Grid.Column="10"
                                Grid.Row="1" FontSize="11" Margin="5,0,5,0"
-                               HorizontalAlignment="Left"/>
+                               HorizontalAlignment="Left" ToolTip="{Binding MobileIp10}"/>
 
                     <TextBox Background="{Binding Mobile1}" Width="50" Grid.Column="1" BorderBrush="LightGray" BorderThickness="1"
                              Grid.Row="2" FontSize="11" Margin="3,10,3,2" Cursor="Hand" IsReadOnly="True" 
