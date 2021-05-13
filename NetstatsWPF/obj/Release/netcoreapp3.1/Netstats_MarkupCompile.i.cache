@@ -1,20 +1,20 @@
 ﻿Netstats
-1.5.6.5
+1.5.6.6
 
 winexe
 C#
 .cs
-P:\Netstats\NetstatsWPF\obj\Release\netcoreapp3.1\
+C:\Users\bmiller\source\repos\netstats\NetstatsWPF\obj\Release\netcoreapp3.1\
 Netstats
 none
 false
 TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1;
-P:\Netstats\NetstatsWPF\App.xaml
+C:\Users\bmiller\source\repos\netstats\NetstatsWPF\App.xaml
 4-409168596
 
 29-211191043
-210-2026858030
+2101583208591
 Styles\Buttons.xaml;Styles\TextBoxes.xaml;Views\MessageBoxView.xaml;Views\ShellView.xaml;
 
-True
+False
 
