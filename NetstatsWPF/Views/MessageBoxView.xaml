@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Netstats.Views"
         mc:Ignorable="d"
         Name="MessageBoxWindow"
-        Title="MessageBoxWindow" Height="200" Width="400" 
+        Title="MessageBoxWindow" Height="220" Width="420" 
         WindowStartupLocation="CenterScreen" WindowStyle="None" Background="Transparent" 
         ResizeMode="NoResize" Topmost="True" ShowInTaskbar="False"
         AllowsTransparency="True"
@@ -25,96 +25,103 @@
                       CornerRadius="0"/>
     </WindowChrome.WindowChrome>
 
-    <Border Background="{DynamicResource MaterialDesignPaper}" CornerRadius="10">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="197*"/>
-                <ColumnDefinition Width="295*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="25"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Border x:Name="Header" Grid.Row="0" Padding="0" Margin="0" 
+    <Border Padding="10">
+        <Border Background="{DynamicResource MaterialDesignPaper}" CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="3" Opacity=".3"/>
+            </Border.Effect>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="197*"/>
+                    <ColumnDefinition Width="295*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border x:Name="Header" Grid.Row="0" Padding="0" Margin="0" 
                     materialDesign:ShadowAssist.ShadowDepth="Depth0"   
                     Background="{DynamicResource MaterialDesignBackground}" 
                     Visibility="Visible" Grid.ColumnSpan="2"
                     CornerRadius="10,10,0,0">
-                <StackPanel>
-                    <TextBlock Padding="3" HorizontalAlignment="Center" 
+                    <StackPanel>
+                        <TextBlock Padding="3" HorizontalAlignment="Center" 
                                VerticalAlignment="Stretch" 
                                Style="{DynamicResource MaterialDesignTitleTextBlock}" 
                                FontSize="15" Foreground="{DynamicResource MaterialDesignBody}"
                                Text="{Binding Title, FallbackValue=Title}">
-                    </TextBlock>
-                </StackPanel>
-            </Border>
-            <StackPanel HorizontalAlignment="Right" Margin="0" VerticalAlignment="Top" Grid.Column="1">
-                <Button Width="25" Height="25" Style="{StaticResource StaticWindowCloseButton}"
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+                <StackPanel HorizontalAlignment="Right" Margin="0" VerticalAlignment="Top" Grid.Column="1">
+                    <Button Width="25" Height="25" Style="{StaticResource StaticWindowCloseButton}"
                         WindowChrome.IsHitTestVisibleInChrome="True" Padding="0" 
                         HorizontalAlignment="Center" Command="{Binding CloseCommand}"
                         CommandParameter="{Binding ElementName=MessageBoxWindow}"
                         ToolTip="Close" Cursor="Arrow">
-                    <Image Source="/Close.png" Height="10" Width="10"/>
-                </Button>
-            </StackPanel>
-            <Grid Grid.Row="1" Grid.ColumnSpan="2">
-                <Grid Margin="20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <Grid Grid.Row="0">
+                        <Image Source="/Close.png" Height="10" Width="10"/>
+                    </Button>
+                </StackPanel>
+                <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                    <Grid Margin="20">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="90"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <materialDesign:TransitioningContent>
-                            <materialDesign:TransitioningContent.OpeningEffects >
-                                <materialDesign:TransitionEffect Kind="FadeIn" />
-                                <materialDesign:TransitionEffect Kind="SlideInFromBottom" />
-                            </materialDesign:TransitioningContent.OpeningEffects>
-                            <TextBox HorizontalAlignment="Left" IsReadOnly="True" Grid.Row="0" Margin="5"
+                        <Grid Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="90"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <materialDesign:TransitioningContent>
+                                <materialDesign:TransitioningContent.OpeningEffects >
+                                    <materialDesign:TransitionEffect Kind="FadeIn" />
+                                    <materialDesign:TransitionEffect Kind="SlideInFromBottom" />
+                                </materialDesign:TransitioningContent.OpeningEffects>
+                                <TextBox HorizontalAlignment="Left" IsReadOnly="True" Grid.Row="0" Margin="5"
                                      materialDesign:HintAssist.Hint="" FontSize="12" Padding="0,-10" TextWrapping="Wrap"
                                      VerticalScrollBarVisibility="Hidden" Width="350" VerticalAlignment="Stretch"
                                      materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                      Foreground="{DynamicResource MaterialDesignBody}"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                                      Text="{Binding Message, FallbackValue=Message}"/>
-                        </materialDesign:TransitioningContent>
+                            </materialDesign:TransitioningContent>
 
-                    </Grid>
-                    <Grid Grid.Row="1" Margin="0,5,0,5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                        </Grid>
+                        <Grid Grid.Row="1" Margin="0,5,0,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
-                        <Button Grid.Column="1" Style="{StaticResource MaterialDesignFlatDarkBgButton}" 
+                            <Button Grid.Column="1" Style="{StaticResource MaterialDesignFlatDarkBgButton}" 
                                 Margin="5" Width="100" Content="OK" ToolTip="Ok" IsDefault="True"
                                 Visibility="{Binding OkVisibility}" Command="{Binding CloseCommand}"
                                 CommandParameter="{Binding ElementName=MessageBoxWindow}"/>
-                        <Button Grid.Column="2" Style="{StaticResource MaterialDesignFlatDarkBgButton}" 
+                            <Button Grid.Column="2" Style="{StaticResource MaterialDesignFlatDarkBgButton}" 
                                 Margin="5" Width="100" Content="Cancel" ToolTip="Cancel"
                                 Visibility="{Binding CancelVisibility}" Command="{Binding CloseCommand}"
                                 CommandParameter="{Binding ElementName=MessageBoxWindow}"/>
-                        <Button Grid.Column="1" Style="{StaticResource MaterialDesignFlatDarkBgButton}" 
+                            <Button Grid.Column="1" Style="{StaticResource MaterialDesignFlatDarkBgButton}" 
                                 Margin="5" Width="100" Content="Yes" ToolTip="Yes"
                                 Visibility="{Binding YesVisibility}" Command="{Binding ReturnYesCommand}"
                                 CommandParameter="{Binding ElementName=MessageBoxWindow}"/>
-                        <Button Grid.Column="2" Style="{StaticResource MaterialDesignFlatDarkBgButton}" 
+                            <Button Grid.Column="2" Style="{StaticResource MaterialDesignFlatDarkBgButton}" 
                                 Margin="5" Width="100" Content="No" ToolTip="No"
                                 Visibility="{Binding NoVisibility}" Command="{Binding CloseCommand}"
                                 CommandParameter="{Binding ElementName=MessageBoxWindow}"/>
-                    </Grid>
+                        </Grid>
 
+                    </Grid>
                 </Grid>
             </Grid>
-        </Grid>
+        </Border>
     </Border>
+
+    
 </Window>

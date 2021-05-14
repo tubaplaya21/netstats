@@ -378,9 +378,10 @@ namespace Netstats.ViewModels
         public double WindowWidth { get; set; }
         public double LeftPosition { get; set; }
         public double TopPosition { get; set; }
-        public double ResizeBorderThickness { get; set; } = 10;
+        public double ResizeBorderThickness { get; set; } = 14;
         public double BorderThickness { get; set; } = 0;
-        public double CaptionHeight { get; set; } = 17;
+        public double ShadowThickness { get; set; } = 10;
+        public double CaptionHeight { get; set; } = 24;
         public string MaximizeSource { get; set; } = "/Maximize.png";
         public string MaximizeText { get; set; } = "Maximize";
         public CornerRadius Radius { get; set; } = new CornerRadius(8, 8, 0, 0);
@@ -399,6 +400,7 @@ namespace Netstats.ViewModels
                 
                 if(value == WindowState.Maximized)
                 {
+                    ShadowThickness = 0;
                     BorderThickness = 7;
                     ResizeBorderThickness = 0;
                     CaptionHeight = 34;
@@ -409,11 +411,12 @@ namespace Netstats.ViewModels
                 }
                 else
                 {
+                    ShadowThickness = 7;
                     BorderThickness = 0;
-                    ResizeBorderThickness = 10;
-                    CaptionHeight = 17;
-                    Radius = new CornerRadius(10, 10, 0, 0);
-                    ButtonRadius = new CornerRadius(0, 10, 0, 0);
+                    ResizeBorderThickness = 14;
+                    CaptionHeight = 24;
+                    Radius = new CornerRadius(8, 8, 0, 0);
+                    ButtonRadius = new CornerRadius(0, 8, 0, 0);
                     MaximizeSource = "/Maximize.png";
                     MaximizeText = "Maximize";
                 }

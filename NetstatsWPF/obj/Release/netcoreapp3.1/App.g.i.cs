@@ -9,9 +9,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using MaterialDesignThemes.Wpf;
-using MaterialDesignThemes.Wpf.Converters;
-using MaterialDesignThemes.Wpf.Transitions;
 using NetstatsWPF;
 using System;
 using System.Diagnostics;
@@ -56,7 +53,7 @@ namespace NetstatsWPF {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Netstats;V1.5.6.5;component/app.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Netstats;V1.5.6.6;component/app.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\App.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
