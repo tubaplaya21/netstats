@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bmiller\\source\\repos\\netstats\\NetstatsWPF\\Netstats.csproj": {}
+    "P:\\Netstats\\NetstatsWPF\\Netstats.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bmiller\\source\\repos\\netstats\\NetstatsWPF\\Netstats.csproj": {
+    "P:\\Netstats\\NetstatsWPF\\Netstats.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bmiller\\source\\repos\\netstats\\NetstatsWPF\\Netstats.csproj",
+        "projectUniqueName": "P:\\Netstats\\NetstatsWPF\\Netstats.csproj",
         "projectName": "Netstats",
-        "projectPath": "C:\\Users\\bmiller\\source\\repos\\netstats\\NetstatsWPF\\Netstats.csproj",
-        "packagesPath": "C:\\Users\\bmiller\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bmiller\\source\\repos\\netstats\\NetstatsWPF\\obj\\",
+        "projectPath": "P:\\Netstats\\NetstatsWPF\\Netstats.csproj",
+        "packagesPath": "C:\\Users\\Benjamin\\.nuget\\packages\\",
+        "outputPath": "P:\\Netstats\\NetstatsWPF\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\bmiller\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Benjamin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -101,7 +102,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

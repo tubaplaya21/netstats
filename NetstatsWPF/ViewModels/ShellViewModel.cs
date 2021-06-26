@@ -3464,6 +3464,8 @@ namespace Netstats.ViewModels
                         try
                         {
                             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            process.StartInfo.CreateNoWindow = true;
+                            process.StartInfo.UseShellExecute = false;
                             process.StartInfo.FileName = path;
                             process.StartInfo.Arguments = cmdText;
                             process.Start();
@@ -3504,6 +3506,8 @@ namespace Netstats.ViewModels
                         try
                         {
                             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            process.StartInfo.CreateNoWindow = true;
+                            process.StartInfo.UseShellExecute = false;
                             process.StartInfo.FileName = path;
                             process.StartInfo.Arguments = cmdText;
                             process.Start();
@@ -3544,6 +3548,8 @@ namespace Netstats.ViewModels
                         try
                         {
                             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            process.StartInfo.CreateNoWindow = true;
+                            process.StartInfo.UseShellExecute = false;
                             process.StartInfo.FileName = path;
                             process.StartInfo.Arguments = cmdText;
                             process.Start();
@@ -3584,6 +3590,8 @@ namespace Netstats.ViewModels
                         try
                         {
                             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            process.StartInfo.CreateNoWindow = true;
+                            process.StartInfo.UseShellExecute = false;
                             process.StartInfo.FileName = path;
                             process.StartInfo.Arguments = cmdText;
                             process.Start();
@@ -3624,6 +3632,8 @@ namespace Netstats.ViewModels
                         try
                         {
                             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            process.StartInfo.CreateNoWindow = true;
+                            process.StartInfo.UseShellExecute = false;
                             process.StartInfo.FileName = path;
                             process.StartInfo.Arguments = cmdText;
                             process.Start();
@@ -3664,6 +3674,8 @@ namespace Netstats.ViewModels
                         try
                         {
                             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            process.StartInfo.CreateNoWindow = true;
+                            process.StartInfo.UseShellExecute = false;
                             process.StartInfo.FileName = path;
                             process.StartInfo.Arguments = cmdText;
                             process.Start();
@@ -3704,6 +3716,8 @@ namespace Netstats.ViewModels
                         try
                         {
                             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            process.StartInfo.CreateNoWindow = true;
+                            process.StartInfo.UseShellExecute = false;
                             process.StartInfo.FileName = path;
                             process.StartInfo.Arguments = cmdText;
                             process.Start();
@@ -3744,6 +3758,8 @@ namespace Netstats.ViewModels
                         try
                         {
                             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            process.StartInfo.CreateNoWindow = true;
+                            process.StartInfo.UseShellExecute = false;
                             process.StartInfo.FileName = path;
                             process.StartInfo.Arguments = cmdText;
                             process.Start();
@@ -3784,6 +3800,8 @@ namespace Netstats.ViewModels
                         try
                         {
                             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            process.StartInfo.CreateNoWindow = true;
+                            process.StartInfo.UseShellExecute = false;
                             process.StartInfo.FileName = path;
                             process.StartInfo.Arguments = cmdText;
                             process.Start();
@@ -3824,6 +3842,8 @@ namespace Netstats.ViewModels
                         try
                         {
                             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            process.StartInfo.CreateNoWindow = true;
+                            process.StartInfo.UseShellExecute = false;
                             process.StartInfo.FileName = path;
                             process.StartInfo.Arguments = cmdText;
                             process.Start();
@@ -3864,6 +3884,8 @@ namespace Netstats.ViewModels
                         try
                         {
                             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            process.StartInfo.CreateNoWindow = true;
+                            process.StartInfo.UseShellExecute = false;
                             process.StartInfo.FileName = path;
                             process.StartInfo.Arguments = cmdText;
                             process.Start();
@@ -3904,6 +3926,8 @@ namespace Netstats.ViewModels
                         try
                         {
                             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            process.StartInfo.CreateNoWindow = true;
+                            process.StartInfo.UseShellExecute = false;
                             process.StartInfo.FileName = path;
                             process.StartInfo.Arguments = cmdText;
                             process.Start();
@@ -3944,6 +3968,8 @@ namespace Netstats.ViewModels
                         try
                         {
                             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            process.StartInfo.CreateNoWindow = true;
+                            process.StartInfo.UseShellExecute = false;
                             process.StartInfo.FileName = path;
                             process.StartInfo.Arguments = cmdText;
                             process.Start();
@@ -3984,6 +4010,8 @@ namespace Netstats.ViewModels
                         try
                         {
                             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            process.StartInfo.CreateNoWindow = true;
+                            process.StartInfo.UseShellExecute = false;
                             process.StartInfo.FileName = path;
                             process.StartInfo.Arguments = cmdText;
                             process.Start();
@@ -4024,6 +4052,8 @@ namespace Netstats.ViewModels
                         try
                         {
                             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            process.StartInfo.CreateNoWindow = true;
+                            process.StartInfo.UseShellExecute = false;
                             process.StartInfo.FileName = path;
                             process.StartInfo.Arguments = cmdText;
                             process.Start();
@@ -4064,6 +4094,8 @@ namespace Netstats.ViewModels
                         try
                         {
                             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            process.StartInfo.CreateNoWindow = true;
+                            process.StartInfo.UseShellExecute = false;
                             process.StartInfo.FileName = path;
                             process.StartInfo.Arguments = cmdText;
                             process.Start();
@@ -4104,6 +4136,8 @@ namespace Netstats.ViewModels
                         try
                         {
                             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            process.StartInfo.CreateNoWindow = true;
+                            process.StartInfo.UseShellExecute = false;
                             process.StartInfo.FileName = path;
                             process.StartInfo.Arguments = cmdText;
                             process.Start();
@@ -4144,6 +4178,8 @@ namespace Netstats.ViewModels
                         try
                         {
                             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            process.StartInfo.CreateNoWindow = true;
+                            process.StartInfo.UseShellExecute = false;
                             process.StartInfo.FileName = path;
                             process.StartInfo.Arguments = cmdText;
                             process.Start();
@@ -4184,6 +4220,8 @@ namespace Netstats.ViewModels
                         try
                         {
                             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            process.StartInfo.CreateNoWindow = true;
+                            process.StartInfo.UseShellExecute = false;
                             process.StartInfo.FileName = path;
                             process.StartInfo.Arguments = cmdText;
                             process.Start();
@@ -4224,6 +4262,8 @@ namespace Netstats.ViewModels
                         try
                         {
                             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            process.StartInfo.CreateNoWindow = true;
+                            process.StartInfo.UseShellExecute = false;
                             process.StartInfo.FileName = path;
                             process.StartInfo.Arguments = cmdText;
                             process.Start();
@@ -4259,6 +4299,8 @@ namespace Netstats.ViewModels
                             try
                             {
                                 process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                                process.StartInfo.CreateNoWindow = true;
+                                process.StartInfo.UseShellExecute = false;
                                 process.StartInfo.FileName = path;
                                 process.StartInfo.Arguments = cmdText;
                                 process.Start();
@@ -4295,6 +4337,8 @@ namespace Netstats.ViewModels
                             try
                             {
                                 process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                                process.StartInfo.CreateNoWindow = true;
+                                process.StartInfo.UseShellExecute = false;
                                 process.StartInfo.FileName = path;
                                 process.StartInfo.Arguments = cmdText;
                                 process.Start();
@@ -4331,6 +4375,8 @@ namespace Netstats.ViewModels
                             try
                             {
                                 process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                                process.StartInfo.CreateNoWindow = true;
+                                process.StartInfo.UseShellExecute = false;
                                 process.StartInfo.FileName = path;
                                 process.StartInfo.Arguments = cmdText;
                                 process.Start();
@@ -4367,6 +4413,8 @@ namespace Netstats.ViewModels
                             try
                             {
                                 process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                                process.StartInfo.CreateNoWindow = true;
+                                process.StartInfo.UseShellExecute = false;
                                 process.StartInfo.FileName = path;
                                 process.StartInfo.Arguments = cmdText;
                                 process.Start();
@@ -4403,6 +4451,8 @@ namespace Netstats.ViewModels
                             try
                             {
                                 process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                                process.StartInfo.CreateNoWindow = true;
+                                process.StartInfo.UseShellExecute = false;
                                 process.StartInfo.FileName = path;
                                 process.StartInfo.Arguments = cmdText;
                                 process.Start();
@@ -4439,6 +4489,8 @@ namespace Netstats.ViewModels
                             try
                             {
                                 process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                                process.StartInfo.CreateNoWindow = true;
+                                process.StartInfo.UseShellExecute = false;
                                 process.StartInfo.FileName = path;
                                 process.StartInfo.Arguments = cmdText;
                                 process.Start();
@@ -4475,6 +4527,8 @@ namespace Netstats.ViewModels
                             try
                             {
                                 process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                                process.StartInfo.CreateNoWindow = true;
+                                process.StartInfo.UseShellExecute = false;
                                 process.StartInfo.FileName = path;
                                 process.StartInfo.Arguments = cmdText;
                                 process.Start();
@@ -4511,6 +4565,8 @@ namespace Netstats.ViewModels
                             try
                             {
                                 process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                                process.StartInfo.CreateNoWindow = true;
+                                process.StartInfo.UseShellExecute = false;
                                 process.StartInfo.FileName = path;
                                 process.StartInfo.Arguments = cmdText;
                                 process.Start();
@@ -4547,6 +4603,8 @@ namespace Netstats.ViewModels
                             try
                             {
                                 process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                                process.StartInfo.CreateNoWindow = true;
+                                process.StartInfo.UseShellExecute = false;
                                 process.StartInfo.FileName = path;
                                 process.StartInfo.Arguments = cmdText;
                                 process.Start();
@@ -4588,6 +4646,8 @@ namespace Netstats.ViewModels
                         try
                         {
                             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            process.StartInfo.CreateNoWindow = true;
+                            process.StartInfo.UseShellExecute = false;
                             process.StartInfo.FileName = path;
                             process.StartInfo.Arguments = cmdText;
                             process.Start();
@@ -4621,6 +4681,8 @@ namespace Netstats.ViewModels
                         try
                         {
                             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            process.StartInfo.CreateNoWindow = true;
+                            process.StartInfo.UseShellExecute = false;
                             process.StartInfo.FileName = path;
                             process.StartInfo.Arguments = cmdText;
                             process.Start();
